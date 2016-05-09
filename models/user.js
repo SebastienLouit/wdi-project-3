@@ -4,10 +4,10 @@ var validator  = require ("validator");
 
 
 var userSchema = new mongoose.Schema({
-  username     = {type: String}
-  image        = {type: String}
-  email        = {type: String, required: true, unique: true}
-  passwordHash = {type: String}
+  username     : {type: String},
+  image        : {type: String},
+  email        : {type: String, required: true, unique: true},
+  passwordHash : {type: String}
 }, {
   timestamps: true
 });
@@ -24,8 +24,8 @@ userSchema.virtual('password')
 
 
 userSchema.virtual('passwordConfirmation')
-  .set(function(password){
-    this.passwordConfirmation = passwordConfirmation
+  .set(function(passwordConfirmation){
+    this._passwordConfirmation = passwordConfirmation
   })
 
 

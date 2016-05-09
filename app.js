@@ -4,11 +4,16 @@ var methodOverride  = require("method-override");
 var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
 var config          = require("./config/config")
-var routes          = require("./config/routes")
+var apiRoutes       = require("./config/api-routes")
+var pageRoutes      = require("./config/page-routes")
+var passport        = require("passport");
+
 
 var app             = express();
 
 mongoose.connect(config.database);
+
+require("./config/passport")(passport);
 
 
 app.use(morgan('dev'));
@@ -31,9 +36,20 @@ app.use(function (err, req, res, next) {
   next();
 });
 
+app.use(passport.initialize());
+
+//JWT Authentication
+app.use('/api', expressJWT({ secret: config.secret })
+.unless({
+  path: [
+    { url: '/api/login', methods: ['POST'] },
+    { url: '/api/register', methods: ['POST'] }
+  ]
+}));
+
 // API Routing //
-var routes = require("./config/routes");
-app.use("/api", routes);
+app.use("/api", apiRoutes);
+
 
 // Front End //
 app.use(express.static(__dirname + "/public"));
