@@ -1,0 +1,21 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/SebastienLouit/wdi-project-3",
+  "authors": [
+    "SebastienLouit <sebastien.louit@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
