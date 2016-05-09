@@ -94,17 +94,17 @@ module.exports = {
   gameRoundSubmit:      gameRoundSubmit,
   gameSessionEnd:       gameSessionEnd,
 }
-
-var gameSessionsController = require('../controllers/gameSessions')
-
-router.route('/gameSessionCreate')
-  .get(gameSessionsController.gameSessionCreate)
-
-router.route('/gameRoundShow')
-  .post(gameSessionsController.gameRoundShow)
-
-router.route('/gameRoundSubmit')
-  .post(gameSessionsController.gameRoundSubmit)
-
-router.route('/gameSessionEnd')
-  .post(gameSessionsController.gameSessionEnd)
+//
+// var gameSessionsController = require('../controllers/gameSessions')
+//
+// router.route('/gameSessionCreate')
+//   .get(gameSessionsController.gameSessionCreate)
+//
+// router.route('/gameRoundShow')
+//   .post(gameSessionsController.gameRoundShow)
+//
+// router.route('/gameRoundSubmit')
+//   .post(gameSessionsController.gameRoundSubmit)
+//
+// router.route('/gameSessionEnd')
+//   .post(gameSessionsController.gameSessionEnd)
