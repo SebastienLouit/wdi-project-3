@@ -17,10 +17,15 @@
   },
   "homepage": "https://github.com/SebastienLouit/wdi-project-3#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "jsonwebtoken": "^6.2.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.15",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "validator": "^5.2.0"
   }
 }
