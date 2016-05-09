@@ -2,25 +2,24 @@
 <html>
 <head>
   <title>Street Smart</title>
-  
-  
-
-  <script type="text/javascript" src="./js/client.js"></script>
-  <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="./vendor/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./vendor/bootstrap/dist/css/bootstrap.css">
-  
+  <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="./vendor/underscore/underscore-min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxM36DxD-TmmCuWMML0UXBVSirOUkF42Q" charset="utf-8"></script>
+  <script type="text/javascript" src="./js/client.js"></script>
 </head>
 <body>
-<div class="container">
-<h1>Street Smart</h1>
-<a class="btn-default" href="" data-template="">PLAY</a>
-<a class="btn-default" href="" data-template="">RULES</a>
-<a class="btn-default" href="" data-template="">LOG IN</a>
-<a class="btn-default" href="" data-template="">REGISTER</a>
-
-</div>
+  <div class="container">
+    <h1>Street Smart</h1>
+    <a class="btn btn-default" href="" data-template="streetview">STREET VIEW</a>
+    <a class="btn btn-default" href="" data-template="rules">RULES</a>
+    <a class="btn btn-default" href="" data-template="login">LOG IN</a>
+    <a class="btn btn-default" href="" data-template="register">REGISTER</a>
+    <a class="btn btn-default" href="" data-template="map" id="gmap">GOOGLE MAP</a>
+  </div>
+  <main></main>
 
 </body>
 </html>
