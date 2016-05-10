@@ -2,6 +2,11 @@ var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
+  console.log(GameSession);
+ $(GameSession.rounds).each(function() {
+   var lat = this.lat
+   var lng = this.lng
+
   // FEED IN LAT AND LNG FOR LOCATION
   // var fenway = {lat: 42.345573, lng: -71.098326};
   var panorama = new google.maps.StreetViewPanorama(
@@ -14,8 +19,9 @@ StreetSmart.generateStreetView = function(map) {
           heading: 34,
           pitch: 10
         }
-      });
-  map.setStreetView(panorama);
+    });
+      map.setStreetView(panorama);
+});
 }
 
 StreetSmart.generateMap = function(){
