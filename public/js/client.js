@@ -25,6 +25,7 @@ StreetSmart.generateMap = function(){
     center: london
   });
   this.generateStreetView(map);
+  StreetSmart.marker = null;
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     if (!StreetSmart.marker) {
@@ -49,11 +50,12 @@ StreetSmart.makeGuess = function() {
     method: "POST",
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
   }).done(function (data){
+  var url = "score"
+  var tpl = "score"
   GameSession = data.gameSession 
-  console.log(GameSession)
+  StreetSmart.getTemplate(tpl, data, url)
   return(data)
   })
-
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
@@ -130,10 +132,8 @@ StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
 }
 
 StreetSmart.getGameSession = function(data){
-  console.log(data)
  GameSession = data.gameSession;
-
- }
+}
 
 
 
