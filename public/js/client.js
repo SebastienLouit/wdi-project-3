@@ -22,7 +22,8 @@ StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
-    center: london
+    center: london,
+    streetViewControl: false
   });
   this.generateStreetView(map);
   StreetSmart.marker = null;
@@ -52,7 +53,7 @@ StreetSmart.makeGuess = function() {
   }).done(function (data){
   var url = "score"
   var tpl = "score"
-  GameSession = data.gameSession 
+  GameSession = data.gameSession
   StreetSmart.getTemplate(tpl, data, url)
   return(data)
   })

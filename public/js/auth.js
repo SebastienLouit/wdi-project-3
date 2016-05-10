@@ -44,5 +44,5 @@ Authentication.initialize = function () {
 }
 
 $(function(){
-  $("form").on("submit", this.submitForm);
+  $("form").on("submit", this.Authentication.submitForm);
 })
