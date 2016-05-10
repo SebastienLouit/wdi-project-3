@@ -7,8 +7,8 @@ StreetSmart.generateStreetView = function(map) {
   var panorama = new google.maps.StreetViewPanorama(
       document.getElementById('pano'), {
         position: {
-          lat: lat,
-          lng: lng
+          lat: 42.345573,
+          lng: -71.098326
         },
         pov: {
           heading: 34,
@@ -57,7 +57,6 @@ StreetSmart.generateMap = function(){
 }
 
 StreetSmart.makeGuess = function() {
-  var roundId = 0 //TBC//
   var gameId  = 0 //TBC//
   event.preventDefault();
   return $.ajax({
@@ -66,7 +65,7 @@ StreetSmart.makeGuess = function() {
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
   }).done(function (data){ return(data)
   })
-  console.log (lat, lng)
+  console.log (StreetSmart.lat, StreetSmart.lng)
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
