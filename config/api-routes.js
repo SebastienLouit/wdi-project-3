@@ -16,17 +16,10 @@ router.route('/users/:id')
   .put(usersController.update)
 
 
-router.route('/gameSessionCreate')
-  .get(gameSessionsController.gameSessionCreate)
+router.route('/games')
+  .post(gameSessionsController.gameSessionCreate)
 
-router.route('/gameRoundShow')
-  .post(gameSessionsController.gameRoundShow)
-
-router.route('/gameRoundSubmit')
-  .post(gameSessionsController.gameRoundSubmit)
-
-router.route('/gameSessionEnd')
-  .post(gameSessionsController.gameSessionEnd)
-
+router.route('/games/:id/guesses')
+  .post(gameSessionsController.gameSessionGuess)
 
 module.exports = router;
