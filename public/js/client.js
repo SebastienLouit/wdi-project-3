@@ -90,7 +90,7 @@ StreetSmart.linkClick = function(){
   // Get which template we need to render
   var tpl = $(this).data("template");
   // If there is a href defined on the a link, then get the data
-  if (url) return StreetSmart.apiAjaxRequest(url, "get", null, tpl);
+  if (url) return StreetSmart.apiAjaxRequest(url, method, data, tpl);
   // If there isn't a href, just load the template
   return StreetSmart.getTemplate(tpl, null, url);
 }
@@ -121,6 +121,11 @@ StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
     StreetSmart.getTemplate("error", null, url);
   });
 }
+
+StreetSmart.getGameSession = function(data){
+ console.log(data);
+}
+
 
 
 StreetSmart.initialize = function () {
