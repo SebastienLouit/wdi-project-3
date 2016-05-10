@@ -1,6 +1,22 @@
 var StreetSmart = StreetSmart || {}
 
 
+StreetSmart.generateStreetView = function(map) {
+  // FEED IN LAT AND LNG FOR LOCATION
+  // var fenway = {lat: 42.345573, lng: -71.098326};
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+        position: {
+          lat: lat,
+          lng: lng
+        },
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+}
 
 StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
@@ -8,6 +24,7 @@ StreetSmart.generateMap = function(){
     zoom: 12,
     center: london
   });
+  this.generateStreetView(map);
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     if (!StreetSmart.marker) {
@@ -15,8 +32,8 @@ StreetSmart.generateMap = function(){
         position: event.latLng,
         map: map
       });
-    } else { 
-      StreetSmart.marker.setPosition(event.latLng); 
+    } else {
+      StreetSmart.marker.setPosition(event.latLng);
     }
     var myLatLng = event.latLng;
     StreetSmart.lat = myLatLng.lat();
@@ -45,7 +62,8 @@ StreetSmart.getTemplate = function(tpl, data, url){
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
     $("main").html(compiledTemplate);
-    StreetSmart.generateMap()
+    console.log("yoyoyoyoyo")
+    StreetSmart.generateMap();
   })
 }
 
@@ -82,7 +100,7 @@ StreetSmart.bindLinkClicks = function(){
   // Event delegation
   $("body").on("click", "a", this.linkClick);
   $("body").on("click", ".guess", this.makeGuess);
-  
+
 }
 
 StreetSmart.bindFormSubmits = function(){
