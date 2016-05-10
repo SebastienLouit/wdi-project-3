@@ -10,31 +10,26 @@ StreetSmart.generateMap = function(){
   });
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng, map);
+    if (!StreetSmart.marker) {
+      StreetSmart.marker = new google.maps.Marker({
+        position: event.latLng,
+        map: map
+      });
+    } else { 
+      StreetSmart.marker.setPosition(event.latLng); 
+    }
+    var myLatLng = event.latLng;
+    StreetSmart.lat = myLatLng.lat();
+    StreetSmart.lng = myLatLng.lng();
   });
-  // Add a marker at the center of the map.
-  addMarker(london, map);
 }
 
-var markers = [];
-
-function addMarker(location, map) {
-
- var marker = new google.maps.Marker({
-   position: location,
-   map: map
- });
-
- google.maps.event.addListenerOnce(map, 'click', function(event) {
-   var lat    = event.latLng.lat()
-   var lng    = event.latLng.lng()
-   console.log( lat, lng)
-
-   return (lat, lng)
- })
+StreetSmart.makeGuess = function() {
+  event.preventDefault();
+  // Have the gameId, gameId
+  // Ajax back to backEnd
+  return console.log(StreetSmart.lat, StreetSmart.lng);
 }
-
-
 
 StreetSmart.getTemplate = function(tpl, data, url){
   var templateUrl = "http://localhost:3000/templates/" + tpl + ".html";
@@ -86,7 +81,8 @@ StreetSmart.linkClick = function(){
 StreetSmart.bindLinkClicks = function(){
   // Event delegation
   $("body").on("click", "a", this.linkClick);
-  console.log(this)
+  $("body").on("click", ".guess", this.makeGuess);
+  
 }
 
 StreetSmart.bindFormSubmits = function(){
