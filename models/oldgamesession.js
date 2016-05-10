@@ -24,6 +24,26 @@ var gameSessionSchema = mongoose.Schema({
 
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   totalScore: Number
+
+
+  function generateLat(){
+    return (51.465010 + (Math.random() * 0.110659))
+  }
+
+  function generateLng(){
+    return (-0.377312 + (Math.random() * 0.558930))
+  }
+
+  // 51.465010
+  // -0.377312
+  // (down left corner)
+  //
+  // lat : 51.575669
+  // log : 0.181618
+  // (this is top right corner)
+
+
+
 },{
   timestamps: true
 })
