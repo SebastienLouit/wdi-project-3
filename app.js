@@ -7,6 +7,7 @@ var config          = require("./config/config")
 var apiRoutes       = require("./config/api-routes")
 var pageRoutes      = require("./config/page-routes")
 var passport        = require("passport");
+var expressJWT      = require("express-jwt");
 
 
 var app             = express();

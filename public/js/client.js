@@ -18,12 +18,12 @@ StreetSmart.generateMap = function(){
 
 // Adds a marker to the map.
 function addMarker(location, map) {
-  var marker = {}
+
   var marker = new google.maps.Marker({
     position: location,
     map: map
   });
-  console.log(location)
+  location()
 }
 
 

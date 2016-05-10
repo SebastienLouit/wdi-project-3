@@ -16,7 +16,7 @@ function generateLng(){
 // log : 0.181618
 // (this is top right corner)
 
-function gameSessionsCreate(req,res){
+function gameSessionCreate(req,res){
 
   var gameSession = new GameSession({ round1Lat: generateLat(),
                       round1Lng: generateLng(),
@@ -61,7 +61,7 @@ function gameSessionEnd(req, res){
     finalScore = gameSession[round1Score] +  gameSession[round2Score] +  gameSession[round3Score] +  gameSession[round4Score] +  gameSession[round5Score];
 
     res.status(200).json({score: finalScore})
-  }
+  })
 }
 
 function gameRoundSubmit(req, res){
