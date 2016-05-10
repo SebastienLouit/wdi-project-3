@@ -1,5 +1,5 @@
 var StreetSmart = StreetSmart || {}
-
+var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
   // FEED IN LAT AND LNG FOR LOCATION
@@ -107,10 +107,11 @@ StreetSmart.linkClick = function(){
   event.preventDefault();
   // Get the url from the link that we clicked
   var url = $(this).attr("href");
+  var method = $(this).attr("method");
   // Get which template we need to render
   var tpl = $(this).data("template");
   // If there is a href defined on the a link, then get the data
-  if (url) return StreetSmart.apiAjaxRequest(url, "get", null, tpl);
+  if (url) return StreetSmart.apiAjaxRequest(url, method, null, tpl);
   // If there isn't a href, just load the template
   return StreetSmart.getTemplate(tpl, null, url);
 }
@@ -134,12 +135,19 @@ StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
     url: "http://localhost:3000"+ url,
     data: data,
   }).done(function(data){
-    console.log(data);
+    if (url = "/api/games") StreetSmart.getGameSession(data);
     if (tpl) return StreetSmart.getTemplate(tpl, data, url);
   }).fail(function(response){
     StreetSmart.getTemplate("error", null, url);
   });
 }
+
+StreetSmart.getGameSession = function(data){
+  console.log(data)
+ GameSession = data.gameSession;
+
+ }
+
 
 
 StreetSmart.initialize = function () {
