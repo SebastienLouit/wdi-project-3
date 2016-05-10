@@ -1,4 +1,5 @@
-var StreetSmart = StreetSmart || {};
+var StreetSmart = StreetSmart || {}
+
 
 
 StreetSmart.generateMap = function(){
@@ -15,16 +16,24 @@ StreetSmart.generateMap = function(){
   addMarker(london, map);
 }
 
+var markers = [];
 
-// Adds a marker to the map.
 function addMarker(location, map) {
 
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map
-  });
-  location()
+ var marker = new google.maps.Marker({
+   position: location,
+   map: map
+ });
+
+ google.maps.event.addListenerOnce(map, 'click', function(event) {
+   var lat    = event.latLng.lat()
+   var lng    = event.latLng.lng()
+   console.log( lat, lng)
+
+   return (lat, lng)
+ })
 }
+
 
 
 StreetSmart.getTemplate = function(tpl, data, url){
@@ -45,6 +54,16 @@ StreetSmart.getTemplate = function(tpl, data, url){
   })
 }
 
+StreetSmart.formSubmit = function(){
+  event.preventDefault();
+  var method = $(this).attr("method");
+  var url    = $(this).attr("action");
+  // This is the template we want to go to AFTER the form submit
+  var tpl    = $(this).data("template");
+  // This gets all the data from the form, you MUST have names on the inputs
+  var data   = $(this).serialize();
+  return StreetSmart.apiAjaxRequest(url, method, data, tpl);
+}
 
 StreetSmart.linkClick = function(){
   // If it has a data attribute of external, then it's an external link
@@ -75,17 +94,19 @@ StreetSmart.bindFormSubmits = function(){
   $("body").on("submit", "form", this.formSubmit);
 }
 
-////////----///////
-
-// StreetSmart.ajaxRequest = function(method, url, data) {
-//   return $.ajax({
-//     method: method,
-//     url: url,
-//     data: data,
-//   }).done(function(data){
-//     console.log (data);
-//   })
-// }
+// // Ajax request to get data from API
+StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
+  return $.ajax({
+    type: method,
+    url: "http://localhost:3000"+ url,
+    data: data,
+  }).done(function(data){
+    console.log(data);
+    if (tpl) return StreetSmart.getTemplate(tpl, data, url);
+  }).fail(function(response){
+    StreetSmart.getTemplate("error", null, url);
+  });
+}
 
 
 StreetSmart.initialize = function () {
