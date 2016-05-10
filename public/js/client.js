@@ -18,21 +18,6 @@ StreetSmart.generateStreetView = function(map) {
   map.setStreetView(panorama);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -57,7 +42,7 @@ StreetSmart.generateMap = function(){
 }
 
 StreetSmart.makeGuess = function() {
-  var gameId  = 0 //TBC//
+  var gameId  = GameSession._id
   event.preventDefault();
   return $.ajax({
     url: "http://localhost:3000/api/games/"+gameId+"/guesses",
@@ -65,7 +50,6 @@ StreetSmart.makeGuess = function() {
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
   }).done(function (data){ return(data)
   })
-  console.log (StreetSmart.lat, StreetSmart.lng)
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
