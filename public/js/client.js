@@ -50,6 +50,7 @@ StreetSmart.generateMap = function(){
     center: london
   });
   this.generateStreetView(map);
+  StreetSmart.marker = null;
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     if (!StreetSmart.marker) {
@@ -67,15 +68,23 @@ StreetSmart.generateMap = function(){
 }
 
 StreetSmart.makeGuess = function() {
+  var gameId  = GameSession._id
   event.preventDefault();
-  // Have the gameId, gameId
-  // Ajax back to backEnd
-  return console.log(StreetSmart.lat, StreetSmart.lng);
+  return $.ajax({
+    url: "http://localhost:3000/api/games/"+gameId+"/guesses",
+    method: "POST",
+    data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
+  }).done(function (data){
+  var url = "score"
+  var tpl = "score"
+  GameSession = data.gameSession
+  StreetSmart.getTemplate(tpl, data, url)
+  return(data)
+  })
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
   var templateUrl = "http://localhost:3000/templates/" + tpl + ".html";
-
   return $.ajax({
     url: templateUrl,
     method: "GET",
@@ -126,7 +135,6 @@ StreetSmart.bindLinkClicks = function(){
   // Event delegation
   $("body").on("click", "a", this.linkClick);
   $("body").on("click", ".guess", this.makeGuess);
-
 }
 
 StreetSmart.bindFormSubmits = function(){
@@ -134,7 +142,7 @@ StreetSmart.bindFormSubmits = function(){
   $("body").on("submit", "form", this.formSubmit);
 }
 
-// // Ajax request to get data from API
+// // Ajax request to get data from API - KEEP FADUMA VERSION
 StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
   return $.ajax({
     type: method,
@@ -149,10 +157,8 @@ StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
 }
 
 StreetSmart.getGameSession = function(data){
-  console.log(data)
  GameSession = data.gameSession;
-
- }
+}
 
 
 StreetSmart.initialize = function () {

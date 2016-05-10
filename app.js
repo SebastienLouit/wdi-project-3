@@ -73,5 +73,5 @@ app.get("*", function(req,res){
 
 // LETS GO //
 app.listen(config.port,function(){
-  console.log("Internationales assemble on port ", config.port);
+  console.log("Internationales assemble on port", config.port);
 });

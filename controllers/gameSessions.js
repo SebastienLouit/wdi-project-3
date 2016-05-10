@@ -22,9 +22,8 @@ function gameSessionGuess(req, res){
     if (gameSession.status !== "Ongoing") return res.status(500).json({ success: false, message: "Game session no longer active!"})
 
     //THESE ARE THE PROBLEMS
-    var guessLat = req.params.lat;
-    var guessLng = req.params.lng;
-
+    var guessLat = req.body.lat;
+    var guessLng = req.body.lng;
 
     var roundLat = gameSession.rounds[gameSession.roundsPlayed].lat;
     var roundLng = gameSession.rounds[gameSession.roundsPlayed].lng;
@@ -32,7 +31,7 @@ function gameSessionGuess(req, res){
     var latDiff = guessLat - roundLat
     var lngDiff = guessLng - roundLng
 
-    var score = (latDiff^2 + lngDiff^2)^0.5
+    var score = Math.floor(Math.pow((Math.pow(latDiff,2) + Math.pow(lngDiff,2)),0.5) * 10000)
     gameSession.rounds[gameSession.roundsPlayed].score = score
 
     gameSession.roundsPlayed++
@@ -48,10 +47,7 @@ function gameSessionGuess(req, res){
       if(err){
         return res.status(500).json({ success: false, message: err})
       }
-        return res.status(201).json({gameSession: gameSession,
-          guessLat: guessLat,
-          roundLat: roundLat,
-          latDiff: latDiff
+        return res.status(201).json({gameSession: gameSession
         })
     })
   })
@@ -64,7 +60,7 @@ module.exports = {
 }
 
 
-// 5731fccdc763276a403dd103
+// 5732037e79167b1347baac16
 // {
 //     "lat": 51.53365782314569,
 //     "lng": -0.17794667697982658
