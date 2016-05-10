@@ -2,6 +2,21 @@ var StreetSmart = StreetSmart || {}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -25,10 +40,16 @@ StreetSmart.generateMap = function(){
 }
 
 StreetSmart.makeGuess = function() {
+  var roundId = 0 //TBC//
+  var gameId  = 0 //TBC//
   event.preventDefault();
-  // Have the gameId, gameId
-  // Ajax back to backEnd
-  return console.log(StreetSmart.lat, StreetSmart.lng);
+  return $.ajax({
+    url: "http://localhost:3000/api/games/"+gameId+"/guesses",
+    method: "POST",
+    data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
+  }).done(function (data){ return(data)
+  })
+  console.log (lat, lng)
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
@@ -82,7 +103,6 @@ StreetSmart.bindLinkClicks = function(){
   // Event delegation
   $("body").on("click", "a", this.linkClick);
   $("body").on("click", ".guess", this.makeGuess);
-  
 }
 
 StreetSmart.bindFormSubmits = function(){
@@ -90,7 +110,7 @@ StreetSmart.bindFormSubmits = function(){
   $("body").on("submit", "form", this.formSubmit);
 }
 
-// // Ajax request to get data from API
+// // Ajax request to get data from API - KEEP FADUMA VERSION
 StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
   return $.ajax({
     type: method,
