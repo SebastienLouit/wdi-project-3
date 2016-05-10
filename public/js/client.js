@@ -2,10 +2,14 @@ var StreetSmart = StreetSmart || {}
 
 
 StreetSmart.generateStreetView = function(map) {
-  var fenway = {lat: 42.345573, lng: -71.098326};
+  // FEED IN LAT AND LNG FOR LOCATION
+  // var fenway = {lat: 42.345573, lng: -71.098326};
   var panorama = new google.maps.StreetViewPanorama(
       document.getElementById('pano'), {
-        position: fenway,
+        position: {
+          lat: lat,
+          lng: lng
+        },
         pov: {
           heading: 34,
           pitch: 10
@@ -20,6 +24,7 @@ StreetSmart.generateMap = function(){
     zoom: 12,
     center: london
   });
+  this.generateStreetView(map);
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     if (!StreetSmart.marker) {
