@@ -2,26 +2,45 @@ var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
-  console.log(GameSession);
- $(GameSession.rounds).each(function() {
-   var lat = this.lat
-   var lng = this.lng
+    // FEED IN LAT AND LNG FOR LOCATION
+    var lat = GameSession.rounds[GameSession.roundsPlayed].lat
+    var lng = GameSession.rounds[GameSession.roundsPlayed].lng
+    var sv = new google.maps.StreetViewService();
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+          position: {
+            lat: lat,
+            lng: lng
+          },
+          pov: {
+            heading: 34,
+            pitch: 10
+          }
+      }
+    );
+    console.log(panorama)
+      if (!panorama.location) {
+        sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 50}, function(data) {
+          console.log(data);
+          var lat = data.location.latLng.lat();
+          var lng = data.location.latLng.lng();
+          var panorama = new google.maps.StreetViewPanorama(
 
-  // FEED IN LAT AND LNG FOR LOCATION
-  // var fenway = {lat: 42.345573, lng: -71.098326};
-  var panorama = new google.maps.StreetViewPanorama(
-      document.getElementById('pano'), {
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        pov: {
-          heading: 34,
-          pitch: 10
-        }
-    });
+            document.getElementById('pano'), {
+              position: {
+                lat: lat,
+                lng: lng
+              },
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            }
+          )
+          console.log(panorama)
+        });
+      }
       map.setStreetView(panorama);
-});
 }
 
 StreetSmart.generateMap = function(){
@@ -134,7 +153,6 @@ StreetSmart.getGameSession = function(data){
  GameSession = data.gameSession;
 
  }
-
 
 
 StreetSmart.initialize = function () {
