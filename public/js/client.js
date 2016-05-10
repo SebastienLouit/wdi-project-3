@@ -48,13 +48,16 @@ StreetSmart.makeGuess = function() {
     url: "http://localhost:3000/api/games/"+gameId+"/guesses",
     method: "POST",
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
-  }).done(function (data){ return(data)
+  }).done(function (data){
+  GameSession = data.gameSession 
+  console.log(GameSession)
+  return(data)
   })
+
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
   var templateUrl = "http://localhost:3000/templates/" + tpl + ".html";
-
   return $.ajax({
     url: templateUrl,
     method: "GET",
