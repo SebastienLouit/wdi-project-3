@@ -1,4 +1,5 @@
-var StreetSmart = StreetSmart || {};
+var StreetSmart = StreetSmart || {}
+
 
 StreetSmart.generateStreetView = function(map) {
   var fenway = {lat: 42.345573, lng: -71.098326};
@@ -21,24 +22,26 @@ StreetSmart.generateMap = function(){
   });
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng, map);
+    if (!StreetSmart.marker) {
+      StreetSmart.marker = new google.maps.Marker({
+        position: event.latLng,
+        map: map
+      });
+    } else {
+      StreetSmart.marker.setPosition(event.latLng);
+    }
+    var myLatLng = event.latLng;
+    StreetSmart.lat = myLatLng.lat();
+    StreetSmart.lng = myLatLng.lng();
   });
-  // Add a marker at the center of the map.
-  addMarker(london, map);
-  StreetSmart.generateStreetView();
 }
 
-
-// Adds a marker to the map.
-function addMarker(location, map) {
-
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map
-  });
-  location()
+StreetSmart.makeGuess = function() {
+  event.preventDefault();
+  // Have the gameId, gameId
+  // Ajax back to backEnd
+  return console.log(StreetSmart.lat, StreetSmart.lng);
 }
-
 
 StreetSmart.getTemplate = function(tpl, data, url){
   var templateUrl = "http://localhost:3000/templates/" + tpl + ".html";
@@ -59,6 +62,16 @@ StreetSmart.getTemplate = function(tpl, data, url){
   })
 }
 
+StreetSmart.formSubmit = function(){
+  event.preventDefault();
+  var method = $(this).attr("method");
+  var url    = $(this).attr("action");
+  // This is the template we want to go to AFTER the form submit
+  var tpl    = $(this).data("template");
+  // This gets all the data from the form, you MUST have names on the inputs
+  var data   = $(this).serialize();
+  return StreetSmart.apiAjaxRequest(url, method, data, tpl);
+}
 
 StreetSmart.linkClick = function(){
   // If it has a data attribute of external, then it's an external link
@@ -81,7 +94,8 @@ StreetSmart.linkClick = function(){
 StreetSmart.bindLinkClicks = function(){
   // Event delegation
   $("body").on("click", "a", this.linkClick);
-  console.log(this)
+  $("body").on("click", ".guess", this.makeGuess);
+
 }
 
 StreetSmart.bindFormSubmits = function(){
@@ -89,17 +103,19 @@ StreetSmart.bindFormSubmits = function(){
   $("body").on("submit", "form", this.formSubmit);
 }
 
-////////----///////
-
-// StreetSmart.ajaxRequest = function(method, url, data) {
-//   return $.ajax({
-//     method: method,
-//     url: url,
-//     data: data,
-//   }).done(function(data){
-//     console.log (data);
-//   })
-// }
+// // Ajax request to get data from API
+StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
+  return $.ajax({
+    type: method,
+    url: "http://localhost:3000"+ url,
+    data: data,
+  }).done(function(data){
+    console.log(data);
+    if (tpl) return StreetSmart.getTemplate(tpl, data, url);
+  }).fail(function(response){
+    StreetSmart.getTemplate("error", null, url);
+  });
+}
 
 
 StreetSmart.initialize = function () {
