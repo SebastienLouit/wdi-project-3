@@ -45,10 +45,12 @@ app.use('/api', expressJWT({ secret: config.secret })
   path: [
     { url: '/api/login', methods: ['POST'] },
     { url: '/api/register', methods: ['POST'] },
-    { url: '/api/games', methods: ['POST'] }
+    { url: '/api/games', methods: ['POST'] },
+    { url: /^\/api\/games\/.*\/guesses/, methods: ['POST']}
   ]
 }));
-
+// '/api/games/' + /[0-z]/ + '/guesses'
+// /^\/api\/games\/*\/guesses\//
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

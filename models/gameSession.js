@@ -21,6 +21,12 @@ gameSessionSchema.pre('save', function(next) {
     });
     this.rounds.push(round);
   }
+  if (!this.roundsPlayed){
+    this.roundsPlayed = 0
+  }
+  if (!this.status){
+    this.status = "Ongoing"
+  }
   next();
 })
 
