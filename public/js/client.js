@@ -1,5 +1,17 @@
 var StreetSmart = StreetSmart || {};
 
+StreetSmart.generateStreetView = function(map) {
+  var fenway = {lat: 42.345573, lng: -71.098326};
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+}
 
 StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
@@ -13,6 +25,7 @@ StreetSmart.generateMap = function(){
   });
   // Add a marker at the center of the map.
   addMarker(london, map);
+  StreetSmart.generateStreetView();
 }
 
 
@@ -41,7 +54,8 @@ StreetSmart.getTemplate = function(tpl, data, url){
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
     $("main").html(compiledTemplate);
-    StreetSmart.generateMap()
+    console.log("yoyoyoyoyo")
+    StreetSmart.generateMap();
   })
 }
 
