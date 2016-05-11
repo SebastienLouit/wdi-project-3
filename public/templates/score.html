@@ -22,9 +22,15 @@
       <h2>Bogey. You'll get 'em next round.</h2>
     <% } %>
 
-    <% if (StreetSmart.roundScore() >= 2000){ %>
-      <h2>Double bogey.</h2>
+    <% if (StreetSmart.roundScore() >= 2000 && StreetSmart.roundScore() < 5000){ %>
+      <h2>Double bogey. Way off.</h2>
     <% } %>
+
+    <% if (StreetSmart.roundScore() >= 5000){ %>
+      <h2>u wot? That's not even London any more is it?</h2>
+    <% } %>
+
+
 
     <h2>Your guess was <%= Math.floor(StreetSmart.roundScore()*11.1) %>m away</h2>
 
