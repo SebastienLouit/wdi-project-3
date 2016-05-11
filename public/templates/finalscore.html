@@ -1,1 +1,16 @@
+<div class="container">
 <h1>Final Score</h1>
+
+<h3>First round : <%= GameSession.rounds[0].score %> <br></h3>
+<h3>Second round : <%= GameSession.rounds[1].score %> <br></h3>
+<h3>Third round : <%= GameSession.rounds[2].score %> <br></h3>
+<h3>Fourth round : <%= GameSession.rounds[3].score %> <br></h3>
+<h3>Fifth round : <%= GameSession.rounds[4].score %> <br></h3>
+
+<h2>Total Score : <%= GameSession.totalScore %></h2>
+
+Play Again ?
+<a class="btn btn-default" method="post"  href="/api/games" data-template="map" id="gmap">Start Game</a>
+
+
+</div>

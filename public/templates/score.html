@@ -4,5 +4,9 @@
 
 <h3>Congractulation, your score is : <%= GameSession.rounds[GameSession.roundsPlayed -1].score %></h3>
 
-
+<%if (GameSession.status === "Ongoing") {%>
+<a class="btn btn-default" data-template="map" id="gmap">New round</a>
+<% } else { %>
+<a class="btn btn-default" data-template="finalscore" id="gmap">View Final Score</a>
+<%}%>
 </div>
