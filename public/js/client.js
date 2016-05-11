@@ -7,7 +7,6 @@ StreetSmart.generateStreetView = function(map) {
   var lat = GameSession.rounds[GameSession.roundsPlayed].lat
   var lng = GameSession.rounds[GameSession.roundsPlayed].lng
   var sv = new google.maps.StreetViewService();
-  var radius = 50
 
   var makePanorama = function(radius){
     sv.getPanorama(
@@ -15,24 +14,22 @@ StreetSmart.generateStreetView = function(map) {
       function(data) {
         if (!data){
           console.log("Radius expanded to " + radius);
-          makePanorama(radius+25);
-        } else {
-          var lat = data.location.latLng.lat();
-          var lng = data.location.latLng.lng();
-          var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: {
-                lat: lat,
-                lng: lng
-              },
-              addressControl: false
-            }
-          )
+          return makePanorama(radius+25);
         }
+        var lat = data.location.latLng.lat();
+        var lng = data.location.latLng.lng();
+        var panorama = new google.maps.StreetViewPanorama(
+          document.getElementById('pano'), {
+            position: {
+              lat: lat,
+              lng: lng
+            },
+            addressControl: false
+          }
+        )
       }
     );
   }
-
   makePanorama(0);
 
 }
@@ -162,6 +159,10 @@ StreetSmart.initialize = function () {
 // StreetSmart.hidePano = function {
 //   $("#pano").hide()
 // }
+
+StreetSmart.roundScore = function(){
+  return GameSession.rounds[GameSession.roundsPlayed-1].score
+}
 
 $(function(){
   StreetSmart.initialize();

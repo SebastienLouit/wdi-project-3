@@ -1,12 +1,41 @@
-<div class="container">
-<h1>You've made your guess</h1>
+<div class="scoreTem">
+  <div class="container">
+    <h1>You've guessed</h1>
+    <h2>... Now let's see how street smart you really are.</h2>
+
+    <% if (StreetSmart.roundScore() < 50){ %>
+      <h3>Incredible.</h3>
+    <% } %>
+
+    <% if (StreetSmart.roundScore() >= 50 && StreetSmart.roundScore() < 200){ %>
+      <h3>Almost.</h3>
+    <% } %>
+
+    <% if (StreetSmart.roundScore() >= 200 && StreetSmart.roundScore() < 500){ %>
+      <h3>Pretty good.</h3>
+    <% } %>
+
+    <% if (StreetSmart.roundScore() >= 500 && StreetSmart.roundScore() < 1000){ %>
+      <h3>Not bad.</h3>
+    <% } %>
+
+    <% if (StreetSmart.roundScore() >= 1000 && StreetSmart.roundScore() < 2000){ %>
+      <h3>Probably the wrong borough.</h3>
+    <% } %>
+
+    <% if (StreetSmart.roundScore() >= 2000){ %>
+      <h3>Eh.</h3>
+    <% } %>
+
+    <h3>Your score is : <%= StreetSmart.roundScore() %></h3>
+
+    <h3>Your guess was <%= StreetSmart.roundScore()*11.1 %>m away</h3>
 
 
-<h3>You guess was , your score is : <%= GameSession.rounds[GameSession.roundsPlayed -1].score %></h3>
-
-<%if (GameSession.status === "Ongoing") {%>
-<a class="btn btn-default" data-template="map" id="gmap">New round</a>
-<% } else { %>
-<a class="btn btn-default" data-template="finalscore" id="gmap">View Final Score</a>
-<%}%>
+    <%if (GameSession.status === "Ongoing") {%>
+    <a class="btn btn-default" data-template="map" id="gmap">New round</a>
+    <% } else { %>
+    <a class="btn btn-default" data-template="finalscore" id="gmap">View Final Score</a>
+    <%}%>
+  </div>
 </div>
