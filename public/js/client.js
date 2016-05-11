@@ -2,6 +2,7 @@ var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
+
   // FEED IN LAT AND LNG FOR LOCATION
   var lat = GameSession.rounds[GameSession.roundsPlayed].lat
   var lng = GameSession.rounds[GameSession.roundsPlayed].lng
@@ -69,11 +70,11 @@ StreetSmart.makeGuess = function() {
     method: "POST",
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
   }).done(function (data){
-  var url = "score"
-  var tpl = "score"
-  GameSession = data.gameSession
-  StreetSmart.getTemplate(tpl, data, url)
-  return(data)
+    var url = "score"
+    var tpl = "score"
+    GameSession = data.gameSession
+    StreetSmart.getTemplate(tpl, data, url)
+    return(data)
   })
 }
 
@@ -158,6 +159,9 @@ StreetSmart.initialize = function () {
   this.bindLinkClicks();
   this.bindFormSubmits();
 }
+// StreetSmart.hidePano = function {
+//   $("#pano").hide()
+// }
 
 $(function(){
   StreetSmart.initialize();

@@ -1,16 +1,34 @@
+.row {
+  padding: none;
+  margin: none;
+}
+
 #map-canvas {
-  height: 500px;
-  width: 500px;
+  height: 110vh;
+  width: 45vw;
+  padding: none;
+  margin: none
+}
+
+#slideButton {
+  height: 110vh;
+  width: 10vw;
+  background-color: blue;
+  padding: none;
+  margin: none
 }
 
 #pano{
-  height:500px;
-  width: 500px;
+  height: 110vh;
+  width: 52vw;
+  padding: none;
+  margin: none
 }
 
 #pano text{
   display: none;
 }
+
 
 .btn-default{
   border-radius: 2px;
@@ -21,6 +39,14 @@
  border-radius: 2px;
  border-color: #82B7C3;
 }
+
+#checkAnswer{
+  position: absolute;
+  left: 10;
+  bottom: 0;
+  z-index: 1000;
+}
+
 
 div.index-logo{
   position: fixed;
