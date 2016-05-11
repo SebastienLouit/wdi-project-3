@@ -1,8 +1,8 @@
 <div class="container">
-<h1>Score</h1>
+<h1>You've made your guess</h1>
 
 
-<h3>Congractulation, your score is : <%= GameSession.rounds[GameSession.roundsPlayed -1].score %></h3>
+<h3>You guess was , your score is : <%= GameSession.rounds[GameSession.roundsPlayed -1].score %></h3>
 
 <%if (GameSession.status === "Ongoing") {%>
 <a class="btn btn-default" data-template="map" id="gmap">New round</a>
