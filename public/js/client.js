@@ -172,6 +172,9 @@ StreetSmart.initialize = function () {
   this.bindLinkClicks();
   this.bindFormSubmits();
 }
+// StreetSmart.hidePano = function {
+//   $("#pano").hide()
+// }
 
 $(function(){
   StreetSmart.initialize();

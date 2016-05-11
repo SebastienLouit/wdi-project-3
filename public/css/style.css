@@ -1,13 +1,29 @@
-#map-canvas {
-  height: 500px;
-  width: 500px;
-  position: relative;
+.row {
+  padding: none;
+  margin: none;
 }
 
-#pano{
+#map-canvas {
+  height: 110vh;
+  width: 45vw;
+  padding: none;
+  margin: none
+}
 
-  height:500px;
-  width: 500px;
+#slideButton {
+  height: 110vh;
+  width: 10vw;
+  background-color: blue;
+  padding: none;
+  margin: none
+}
+
+
+#pano{
+  height: 110vh;
+  width: 52vw;
+  padding: none;
+  margin: none
 }
 
 #pano text{
@@ -15,16 +31,10 @@
 }
 
 #checkAnswer{
-  position: relative;
-  top:-35px;
+  position: absolute;
+  left: 10;
+  bottom: 0;
   z-index: 1000;
-}
-
-#noPadding1{
-  padding: 0
-}
-#noPadding2{
-  padding: 0
 }
 
 div.index-logo{
