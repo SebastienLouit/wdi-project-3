@@ -8,3 +8,7 @@
   height:500px;
   width: 500px;
 }
+
+#pano text{
+  display: none;
+}
