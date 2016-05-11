@@ -1,14 +1,27 @@
 #map-canvas {
   height: 500px;
   width: 500px;
+  position: relative;
 }
 
-
- #pano{
+#pano {
   height:500px;
   width: 500px;
 }
 
 #pano text{
   display: none;
+}
+
+#checkAnswer{
+  position: relative;
+  top:-35px;
+  z-index: 1000;
+}
+
+#noPadding1{
+  padding: 0
+}
+#noPadding2{
+  padding: 0
 }
