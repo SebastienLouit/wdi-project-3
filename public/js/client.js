@@ -173,4 +173,5 @@ StreetSmart.initialize = function () {
 
 $(function(){
   StreetSmart.initialize();
+  StreetSmart.getTemplate("home", null, "home");
 })

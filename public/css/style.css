@@ -4,11 +4,27 @@
 }
 
 
- #pano{
+#pano{
   height:500px;
   width: 500px;
 }
 
 #pano text{
   display: none;
+}
+
+div.index-logo{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+
+div.index-logo h1{
+  color: #DEDEDE;
+  font-size: 2em;
+}
+
+body {
+  background-color: #1C1C1C;
 }
