@@ -1,25 +1,27 @@
 .row {
   padding: none;
   margin: none;
+  width: 100%;
 }
 
 #map-canvas {
-  height: 110vh;
+  height: 102vh;
   width: 45vw;
   padding: none;
-  margin: none
+  margin: none;
 }
 
 #slideButton {
-  height: 110vh;
+  height: 102vh;
   width: 10vw;
   background-color: blue;
   padding: none;
-  margin: none
+  margin: none;
+
 }
 
 #pano{
-  height: 110vh;
+  height: 102vh;
   width: 52vw;
   padding: none;
   margin: none
