@@ -1,10 +1,11 @@
 
 
 <div class="row">
-<div class="col-xs-1">
-  <div id="slideButton">
+  <div class="col-xs-1">
+    <div id="slideButton">
+    <img src id="clicinImage" ="./images/clicin.svg"> 
+    </div>
   </div>
-</div>
   <div class="col-xs-6">
     <div id="pano">
     </div>
@@ -21,14 +22,29 @@
 
 <script type="text/javascript">
 
+  var panoToggle= 1
+
   $("#slideButton").click(function(){
     $("#mapContainer").animate({
       width: "toggle",
-   
     });
-    $("#pano").animate({
-      width: '+=50vw',
-    });
+    if (panoToggle === 1){
+      panoToggle = 0
+      $("#pano").animate({
+        width: '+=50vw',
+      });
+      $("div.gm-style canvas").animate({
+        width: '+=50vw',
+      })   
+    } else {
+      panoToggle = 1
+      $("#pano").animate({
+        width: '-=50vw',
+      });
+      $("div.gm-style canvas").animate({
+        width: '-=50vw',
+      })
+    }
   })
 
 </script>

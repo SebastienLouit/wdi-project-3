@@ -1,3 +1,8 @@
+#clicinImage{
+
+width: 80%;
+}
+
 .row {
   padding: none;
   margin: none;
@@ -12,17 +17,23 @@
 }
 
 #slideButton {
+  text-align: center;
   height: 102vh;
-  width: 10vw;
-  background-color: blue;
+  width: 15vw;
   padding: none;
   margin: none;
-
+  background-color: #8E0E00;
+  background-color: -webkit-linear-gradient(to left, #8E0E00 , #6F0B00); 
+  /* Chrome 10-25, Safari 5.1-6 */
+  background-color: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: url("/images/gmapLogo.png");
+  background-image: center;
+  background-size: cover;
 }
 
 #pano{
   height: 102vh;
-  width: 52vw;
+  width: 51vw;
   padding: none;
   margin: none
 }
