@@ -12,6 +12,10 @@ StreetSmart.generateStreetView = function(map) {
             lat: lat,
             lng: lng
           },
+          addressControlOptions: {
+            position: google.maps.ControlPosition.BOTTOM_CENTER
+          },
+          zoomControl: false,
           pov: {
             heading: 34,
             pitch: 10
@@ -19,8 +23,8 @@ StreetSmart.generateStreetView = function(map) {
       }
     );
     console.log(panorama)
-      if (!panorama.location) {
-        sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 50}, function(data) {
+      if (!panorama.location){
+        sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
           console.log(data);
           var lat = data.location.latLng.lat();
           var lng = data.location.latLng.lng();
@@ -31,6 +35,7 @@ StreetSmart.generateStreetView = function(map) {
                 lat: lat,
                 lng: lng
               },
+              addressControl: false,
               pov: {
                 heading: 34,
                 pitch: 10
@@ -97,7 +102,6 @@ StreetSmart.getTemplate = function(tpl, data, url){
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
     $("main").html(compiledTemplate);
-    console.log("yoyoyoyoyo")
     StreetSmart.generateMap();
   })
 }
