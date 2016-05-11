@@ -6,46 +6,53 @@ StreetSmart.generateStreetView = function(map) {
     var lat = GameSession.rounds[GameSession.roundsPlayed].lat
     var lng = GameSession.rounds[GameSession.roundsPlayed].lng
     var sv = new google.maps.StreetViewService();
-    var panorama = new google.maps.StreetViewPanorama(
-        document.getElementById('pano'), {
-          position: {
-            lat: lat,
-            lng: lng
-          },
-          addressControlOptions: {
-            position: google.maps.ControlPosition.BOTTOM_CENTER
-          },
-          zoomControl: false,
-          pov: {
-            heading: 34,
-            pitch: 10
-          }
-      }
-    );
-    console.log(panorama)
-      if (!panorama.location){
-        sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
-          console.log(data);
-          var lat = data.location.latLng.lat();
-          var lng = data.location.latLng.lng();
-          var panorama = new google.maps.StreetViewPanorama(
+    var radius = 50
 
-            document.getElementById('pano'), {
-              position: {
-                lat: lat,
-                lng: lng
-              },
-              addressControl: false,
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
+    var panorama = new google.maps.StreetViewPanorama(
+
+
+          document.getElementById('pano'), {
+            position: {
+              lat: lat,
+              lng: lng
+            },
+            addressControlOptions: false,
+            zoomControl: false,
+            pov: {
+              heading: 34,
+              pitch: 10
             }
-          )
-          console.log(panorama)
-        });
-      }
-      map.setStreetView(panorama);
+          }
+        
+    );
+
+    console.log(panorama)
+
+
+    for(i = 0; !!panorama.location; radius+=50){
+      console.log("Inside the for loop", radius)
+      sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
+        console.log(data);
+        var lat = data.location.latLng.lat();
+        var lng = data.location.latLng.lng();
+        var panorama = new google.maps.StreetViewPanorama(
+
+          document.getElementById('pano'), {
+            position: {
+              lat: lat,
+              lng: lng
+            },
+            addressControl: false,
+            pov: {
+              heading: 34,
+              pitch: 10
+            }
+          }
+        )
+        console.log(panorama)
+
+      });
+    }
 }
 
 StreetSmart.generateMap = function(){
