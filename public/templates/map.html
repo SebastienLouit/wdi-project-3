@@ -1,20 +1,50 @@
 
 
 <div class="row">
+  <div class="col-xs-1">
+    <div id="slideButton">
+    <img src id="clicinImage" ="./images/clicin.svg"> 
+    </div>
+  </div>
   <div class="col-xs-6">
     <div id="pano">
     </div>
   </div>
-  <div class="col-xs-1">
-    <div id="slideButton">
-    </div>
-  </div>
+  
   <div class="col-xs-5" id="mapContainer">
     <div id="map-canvas">
     </div>
     <button type="submit" class="guess btn btn-default" data-template="score" id="checkAnswer">Check Answer</button>
   </div>
+  
 </div>
 </div>
 
+<script type="text/javascript">
 
+  var panoToggle= 1
+
+  $("#slideButton").click(function(){
+    $("#mapContainer").animate({
+      width: "toggle",
+    });
+    if (panoToggle === 1){
+      panoToggle = 0
+      $("#pano").animate({
+        width: '+=50vw',
+      });
+      $("div.gm-style canvas").animate({
+        width: '+=50vw',
+      })   
+    } else {
+      panoToggle = 1
+      $("#pano").animate({
+        width: '-=50vw',
+      });
+      $("div.gm-style canvas").animate({
+        width: '-=50vw',
+      })
+    }
+  })
+
+</script>

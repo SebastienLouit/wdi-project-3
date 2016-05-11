@@ -1,26 +1,39 @@
+#clicinImage{
+
+width: 80%;
+}
+
 .row {
+  padding: none;
+  margin: none;
+  width: 100%;
+}
+
+#map-canvas {
+  height: 102vh;
+  width: 45vw;
   padding: none;
   margin: none;
 }
 
-#map-canvas {
-  height: 110vh;
-  width: 45vw;
-  padding: none;
-  margin: none
-}
-
 #slideButton {
-  height: 110vh;
-  width: 10vw;
-  background-color: blue;
+  text-align: center;
+  height: 102vh;
+  width: 15vw;
   padding: none;
-  margin: none
+  margin: none;
+  background-color: #8E0E00;
+  background-color: -webkit-linear-gradient(to left, #8E0E00 , #6F0B00);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background-color: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: url("/images/gmapLogo.png");
+  background-image: center;
+  background-size: cover;
 }
 
 #pano{
-  height: 110vh;
-  width: 52vw;
+  height: 102vh;
+  width: 51vw;
   padding: none;
   margin: none
 }
@@ -31,13 +44,19 @@
 
 
 .btn-default{
-  border-radius: 2px;
+  border-radius: 6px;
+  background: #1F1C18;
+  border-color: #242422;
+  color: #E5E5E5;
 }
 
-.btn.btn-primary.btn-lg.btn-block{
- background-color: #82B7C3;
- border-radius: 2px;
- border-color: #82B7C3;
+.btn.btn-primary{
+  background: #8E0E00; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #8E0E00 , ##6F0B00); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 6px;
+  border-color: #1F1C18;
+  margin-bottom: 7px;
 }
 
 #checkAnswer{
@@ -62,7 +81,26 @@ div.index-logo h1{
 
 body{
   position: relative;
-  background: linear-gradient(to right , #5F5E5E, #565656, #424242);
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2A2C2D , #414345); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(90deg, #2A2C2D , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #E5E5E5;
+}
+
+h1{
+  font-size: 2em;
+}
+h2{
+  font-size: 1.5em;
+  font-family: 'RailwayRegular';
+  font-weight: normal;
+  font-style: normal;
+}
+p{
+  font-size: 1em;
+  font-family: 'RailwayRegular';
+  font-weight: normal;
+  font-style: normal;
 }
 
 div.homeTem > div.container {
@@ -76,9 +114,48 @@ div.homeTem{
   height: 100vh;
   width: 100vw;
   position: absolute;
-  background: linear-gradient(to right , #5F5E5E, #565656, #424242);
   z-index: 10;
   margin: 0, auto, 0, auto;
+  background-image: url("../images/london-rain.jpg");
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.homeTem > div.container > div.header{
+  text-align: center;
+  color: #E5E5E5;
+  text-shadow: 2px 2px #4E4948;
+}
+
+div.homeTem > div.container > div.header > p{
+ text-shadow: 2px 1px #1F1C18;
+}
+
+div.homeTem > div.container > div.header > img{
+  width: 14vw;
+}
+
+div.rulesTem{
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/trafalgar.jpg");
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.rulesTem > div.container{
+  background-color: rgba(35,37,38, 0.6); /* fallback for old browsers */
+  /*background: -webkit-linear-gradient(to left, #2A2C2D , #414345);*/ /* Chrome 10-25, Safari 5.1-6 */
+  /*background: linear-gradient(90deg, #2A2C2D , #414345);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
 }
 
 div.scoreTem{
@@ -86,13 +163,8 @@ div.scoreTem{
   width: 100vw;
   background-color: rgba(0,0,0,0);
   position: relative;
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-div.scoreTem > div.container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
