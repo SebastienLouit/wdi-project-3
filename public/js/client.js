@@ -15,7 +15,8 @@ StreetSmart.generateStreetView = function(map) {
           pov: {
             heading: 34,
             pitch: 10
-          }
+          },
+       
       }
     );
     console.log(panorama)
@@ -34,7 +35,8 @@ StreetSmart.generateStreetView = function(map) {
               pov: {
                 heading: 34,
                 pitch: 10
-              }
+              },
+              disableDefaultUI: true
             }
           )
           console.log(panorama)
