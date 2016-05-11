@@ -2,57 +2,78 @@ var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
-    // FEED IN LAT AND LNG FOR LOCATION
-    var lat = GameSession.rounds[GameSession.roundsPlayed].lat
-    var lng = GameSession.rounds[GameSession.roundsPlayed].lng
-    var sv = new google.maps.StreetViewService();
-    var radius = 50
+  // FEED IN LAT AND LNG FOR LOCATION
+  var lat = GameSession.rounds[GameSession.roundsPlayed].lat
+  var lng = GameSession.rounds[GameSession.roundsPlayed].lng
+  var sv = new google.maps.StreetViewService();
+  var radius = 50
 
-    var panorama = new google.maps.StreetViewPanorama(
+  // var panorama = new google.maps.StreetViewPanorama(
+  //   document.getElementById('pano'), {
+  //     position: {
+  //       lat: lat,
+  //       lng: lng
+  //     },
+  //     addressControlOptions: false,
+  //     zoomControl: false,
+  //     pov: {
+  //       heading: 34,
+  //       pitch: 10
+  //     }
+  //   }
+  // );
 
-
-          document.getElementById('pano'), {
-            position: {
-              lat: lat,
-              lng: lng
-            },
-            addressControlOptions: false,
-            zoomControl: false,
-            pov: {
-              heading: 34,
-              pitch: 10
+  var makePanorama = function(radius){
+    sv.getPanorama(
+      {location: new google.maps.LatLng(lat, lng), radius: radius},
+      function(data) {
+        console.log(data)
+        if (!data){
+          console.log("Radius not large enough");
+          makePanorama(radius+25);
+        } else {
+          var lat = data.location.latLng.lat();
+          var lng = data.location.latLng.lng();
+          var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: {
+                lat: lat,
+                lng: lng
+              },
+              addressControl: false
             }
-          }
-        
+          )
+        }
+      }
     );
+  }
 
-    console.log(panorama)
+  makePanorama(0);
 
-
-    for(i = 0; !!panorama.location; radius+=50){
-      console.log("Inside the for loop", radius)
-      sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
-        console.log(data);
-        var lat = data.location.latLng.lat();
-        var lng = data.location.latLng.lng();
-        var panorama = new google.maps.StreetViewPanorama(
-
-          document.getElementById('pano'), {
-            position: {
-              lat: lat,
-              lng: lng
-            },
-            addressControl: false,
-            pov: {
-              heading: 34,
-              pitch: 10
-            }
-          }
-        )
-        console.log(panorama)
-
-      });
-    }
+  // for(radius = 50; !!panorama.location; radius+=50){
+  //   console.log("Inside the for loop", radius)
+  //   //start
+  //   sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
+  //     console.log(data);
+  //     var lat = data.location.latLng.lat();
+  //     var lng = data.location.latLng.lng();
+  //     var panorama = new google.maps.StreetViewPanorama(
+  //       document.getElementById('pano'), {
+  //         position: {
+  //           lat: lat,
+  //           lng: lng
+  //         },
+  //         addressControl: false,
+  //         pov: {
+  //           heading: 34,
+  //           pitch: 10
+  //         }
+  //       }
+  //     )
+  //     console.log(panorama)
+  //   });
+  //   //end
+  // }
 }
 
 StreetSmart.generateMap = function(){
