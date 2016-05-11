@@ -2,63 +2,50 @@ var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
 StreetSmart.generateStreetView = function(map) {
-    // FEED IN LAT AND LNG FOR LOCATION
-    var lat = GameSession.rounds[GameSession.roundsPlayed].lat
-    var lng = GameSession.rounds[GameSession.roundsPlayed].lng
-    var sv = new google.maps.StreetViewService();
-    var panorama = new google.maps.StreetViewPanorama(
-      document.getElementById('pano'), {
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        addressControlOptions: {
-          position: google.maps.ControlPosition.BOTTOM_CENTER
-        },
-        zoomControl: false,
-        pov: {
-          heading: 34,
-          pitch: 10
+
+  // FEED IN LAT AND LNG FOR LOCATION
+  var lat = GameSession.rounds[GameSession.roundsPlayed].lat
+  var lng = GameSession.rounds[GameSession.roundsPlayed].lng
+  var sv = new google.maps.StreetViewService();
+  var radius = 50
+
+  var makePanorama = function(radius){
+    sv.getPanorama(
+      {location: new google.maps.LatLng(lat, lng), radius: radius},
+      function(data) {
+        if (!data){
+          console.log("Radius expanded to " + radius);
+          makePanorama(radius+25);
+        } else {
+          var lat = data.location.latLng.lat();
+          var lng = data.location.latLng.lng();
+          var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: {
+                lat: lat,
+                lng: lng
+              },
+              addressControl: false
+            }
+          )
         }
       }
-      );
-
-    console.log(panorama)
-    if (!panorama.location){
-      sv.getPanorama({location: new google.maps.LatLng(lat, lng), radius: 150}, function(data) {
-        console.log(data);
-        var lat = data.location.latLng.lat();
-        var lng = data.location.latLng.lng();
-        var panorama = new google.maps.StreetViewPanorama(
-
-          document.getElementById('pano'), {
-            position: {
-              lat: lat,
-              lng: lng
-            },
-            addressControl: false,
-            pov: {
-              heading: 34,
-              pitch: 10
-            }
-          }
-          )
-        console.log(panorama)
-      });
-    }
-    map.setStreetView(panorama);
+    );
   }
 
+  makePanorama(0);
 
-  StreetSmart.generateMap = function(){
-    var london = { lat: 51.50, lng: -0.08 };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-      zoom: 12,
-      center: london,
-      streetViewControl: false
-    });
-    this.generateStreetView(map);
-    StreetSmart.marker = null;
+}
+
+StreetSmart.generateMap = function(){
+  var london = { lat: 51.50, lng: -0.08 };
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 12,
+    center: london,
+    streetViewControl: false
+  });
+  this.generateStreetView(map);
+  StreetSmart.marker = null;
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     if (!StreetSmart.marker) {
