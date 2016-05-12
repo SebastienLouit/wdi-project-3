@@ -326,8 +326,21 @@ StreetSmart.getTemplate = function(tpl, data, url){
     // Fills in the <%= %>, <% %> with data
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
-    $("main").html(compiledTemplate);
-    StreetSmart.generateMap();
+
+    if (tpl === "map" || tpl === "score"){
+      $("main").html(compiledTemplate)
+      StreetSmart.generateMap();
+    } else {
+      $("main").slideUp(300).delay(300).fadeIn(300);
+      setTimeout(function(){
+        $("main").html(compiledTemplate).hide();
+      },300)
+    }
+
+    if( tpl === "score"){
+      //Run just for score
+    }
+
   })
 }
 

@@ -8,7 +8,7 @@
 span.glyphicon-chevron-right {
     font-size: 5em;
     color: #E5E5E5;
-    margin: 0 auto; 
+    margin: 0 auto;
     transition: all 0.5s ease;
 }
 
@@ -29,7 +29,7 @@ span.glyphicon-chevron-right {
   vertical-align: center;
   text-align: center;
   display: flex;
-  align-items: center; 
+  align-items: center;
   height: 100vh;
   width: 9vw;
   padding: none;
@@ -90,6 +90,16 @@ div.index-logo{
 div.index-logo h1{
   color: #DEDEDE;
   font-size: 2em;
+}
+
+div#street-smart-background{
+  position: fixed;
+  z-index: -10;
+  background: #E5E5E5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #E5E5E5 , #eef2f3); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #E5E5E5 , #eef2f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+  width: 100vw
 }
 
 body{
