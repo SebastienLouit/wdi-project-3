@@ -31,8 +31,12 @@ function gameSessionGuess(req, res){
     var latDiff = guessLat - roundLat
     var lngDiff = guessLng - roundLng
 
-    var score = Math.floor(Math.pow((Math.pow(latDiff,2) + Math.pow(lngDiff,2)),0.5) * 10000)
+    var unprocessedScore = Math.floor(Math.pow((Math.pow(latDiff,2) + Math.pow(lngDiff,2)),0.5) * 10000)
+    var score = Math.floor( 5000* (Math.pow(0.997,unprocessedScore)) )
     gameSession.rounds[gameSession.roundsPlayed].score = score
+
+    distance =  (Math.floor( unprocessedScore *11.1))/1000
+    gameSession.rounds[gameSession.roundsPlayed].distance = distance
 
     gameSession.roundsPlayed++
     if (gameSession.roundsPlayed === 5){
@@ -58,10 +62,3 @@ module.exports = {
   gameSessionCreate:    gameSessionCreate,
   gameSessionGuess:     gameSessionGuess
 }
-
-
-// 5732037e79167b1347baac16
-// {
-//     "lat": 51.53365782314569,
-//     "lng": -0.17794667697982658
-// }
