@@ -1,8 +1,17 @@
+#answerMap-canvas{
+    height: 100vh;
+    width: 50vw;
+    padding: none;
+    margin: none;
+  }
+
+
+
 .rotate {
-    -moz-transform: rotate(-180deg);
-    -webkit-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    -o-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
 }
 
 span.glyphicon-chevron-right {
@@ -20,7 +29,7 @@ span.glyphicon-chevron-right {
 
 #map-canvas {
   height: 100vh;
-  width: 43vw;
+  width: 50vw;
   padding: none;
   margin: none;
 }
@@ -101,6 +110,16 @@ div.index-logo{
 div.index-logo h1{
   color: #DEDEDE;
   font-size: 2em;
+}
+
+div#street-smart-background{
+  position: fixed;
+  z-index: -10;
+  background: #E5E5E5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #E5E5E5 , #eef2f3); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #E5E5E5 , #eef2f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+  width: 100vw
 }
 
 body{
