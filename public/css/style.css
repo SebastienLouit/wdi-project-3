@@ -15,7 +15,7 @@
 }
 
 span.glyphicon-chevron-right {
-  font-size: 5em;
+  font-size: 4em;
   color: #E5E5E5;
   margin: 0 auto;
   transition: all 0.5s ease;
@@ -29,7 +29,7 @@ span.glyphicon-chevron-right {
 
 #map-canvas {
   height: 100vh;
-  width: 50vw;
+  width: 42vw;
   padding: none;
   margin: none;
 }
