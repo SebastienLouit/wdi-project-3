@@ -1,16 +1,44 @@
-<div class="container">
-<h1>Final Score</h1>
+<div class="scoreTem">
+  <div class="container">
+    <h1>Final Score</h1>
 
-<h3>First round : <%= GameSession.rounds[0].score %> <br></h3>
-<h3>Second round : <%= GameSession.rounds[1].score %> <br></h3>
-<h3>Third round : <%= GameSession.rounds[2].score %> <br></h3>
-<h3>Fourth round : <%= GameSession.rounds[3].score %> <br></h3>
-<h3>Fifth round : <%= GameSession.rounds[4].score %> <br></h3>
+    <p>First round : <%= GameSession.rounds[0].score %></p>
+    <p>Second round : <%= GameSession.rounds[1].score %></p>
+    <p>Third round : <%= GameSession.rounds[2].score %></p>
+    <p>Fourth round : <%= GameSession.rounds[3].score %></p>
+    <p>Fifth round : <%= GameSession.rounds[4].score %></p>
 
-<h2>Total Score : <%= GameSession.totalScore %></h2>
+    <h2>Total Score : <%= GameSession.totalScore %></h2>
 
-Play Again ?
-<a class="btn btn-default" method="post"  href="/api/games" data-template="map" id="gmap">Start Game</a>
+    <% if (GameSession.totalScore < 200 ){ %>
+      <p>Unbelievable. One might suspect you cheated.</p>
+    <% } %>
 
+    <% if (GameSession.totalScore >= 200 && GameSession.totalScore < 1000){ %>
+      <p>Very nice. You know London like the back of your hand, eh.</p>
+    <% } %>
 
+    <% if (GameSession.totalScore >= 1000 && GameSession.totalScore < 4000){ %>
+      <p>Impressive. London must be your home.</p>
+    <% } %>
+
+    <% if (GameSession.totalScore >= 4000 && GameSession.totalScore < 8000){ %>
+      <p>A fair showing, but you won't be winning any prizes I can tell you that much</p>
+    <% } %>
+
+    <% if (GameSession.totalScore >= 8000 && GameSession.totalScore < 12000){ %>
+      <p>Not the worst I've seen, you probably just got unlucky</p>
+    <% } %>
+
+    <% if (GameSession.totalScore >= 12000 && GameSession.totalScore < 30000){ %>
+      <p>Oh well, that was quite poor, but there's always next time eh.</p>
+    <% } %>
+
+    <% if (GameSession.totalScore >= 30000 ){ %>
+      <p>Have you been taking the piss?</p>
+    <% } %>
+
+    <a class="btn btn-default" method="post"  href="/api/games" data-template="map" id="gmap">Play Again?</a>
+
+  </div>
 </div>
