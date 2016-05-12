@@ -4,9 +4,6 @@
     padding: none;
     margin: none;
   }
-
-
-
 .rotate {
   -moz-transform: rotate(-180deg);
   -webkit-transform: rotate(-180deg);
@@ -15,10 +12,11 @@
 }
 
 span.glyphicon-chevron-right {
-    font-size: 5em;
-    color: #E5E5E5;
-    margin: 0 auto;
-    transition: all 0.5s ease;
+
+  font-size: 4em;
+  color: #E5E5E5;
+  margin: 0 auto;
+  transition: all 0.5s ease;
 }
 
 .row {
@@ -29,7 +27,7 @@ span.glyphicon-chevron-right {
 
 #map-canvas {
   height: 100vh;
-  width: 50vw;
+  width: 42vw;
   padding: none;
   margin: none;
 }
@@ -147,13 +145,6 @@ p{
 
 }
 
-div.homeTem > div.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 div.homeTem{
   height: 100vh;
   width: 100vw;
@@ -168,6 +159,12 @@ div.homeTem{
   justify-content: center;
   align-items: center;
 }
+div.homeTem > div.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 div.homeTem > div.container > div.header{
   text-align: center;
@@ -176,6 +173,7 @@ div.homeTem > div.container > div.header{
 }
 div.homeTem > div.container {
   background-color: rgba(40, 40, 43, 0.18);
+  border-radius: 15px;
 }
 
 div.homeTem > div.container > div.header > h1{
@@ -187,6 +185,7 @@ div.homeTem > div.container > div.header > p{
  font-size: 1.2em;
  font-weight: 400;
  margin-bottom: 10px;
+
 }
 
 div.homeTem > div.container > div.header > img{
@@ -222,6 +221,7 @@ div.rulesTem > div.container{
   /*background: -webkit-linear-gradient(to left, #2A2C2D , #414345);*/ /* Chrome 10-25, Safari 5.1-6 */
   /*background: linear-gradient(90deg, #2A2C2D , #414345);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
+  border-radius: 15px;
 }
 div.rulesTem > div.container > div.header > img{
   width: 14vw;
@@ -248,4 +248,45 @@ div.scoreTem > div.container{
 
 div.scoreTem > div.container > img{
   width: 14vw;
+}
+
+
+div.finalscoreTem{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/london-birds-eye-bus.jpg");
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-size: cover;
+}
+div.finalscoreTem > div.container{
+  background-color: rgba(35,37,38, 0.635);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.fontSizeChange {
+ font-size: 1.5em;
+}
+
+div.finalscoreTem > div.container > p {
+  line-height: 1;
+}
+
+
+div.finalscoreTem > div.container > div.fontSizeChange > h2 {
+   font-size: 1.2em;
+   text-align: center;
+}
+div.finalscoreTem > div.container > div.fontSizeChange h2.totalDistance{
+  margin-top : 0px;
+}
+
+div.finalscoreTem > div.container > div.button {
+  margin: 10px;
 }

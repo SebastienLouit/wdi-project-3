@@ -31,7 +31,7 @@ StreetSmart.generateStreetView = function(map) {
   }
   makePanorama(0);
 }
-StreetSmart.generateMap = function(){
+StreetSmart.generateMap = function(marker1, marker2){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
@@ -273,21 +273,18 @@ StreetSmart.generateMap = function(){
       ]
     }
     ]
-
-
-
-
-
-
   });
   this.generateStreetView(map);
   StreetSmart.marker = null;
+  StreetSmart.map = map
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
+    var image = "/images/map-placeholder-black.png"
     if (!StreetSmart.marker) {
       StreetSmart.marker = new google.maps.Marker({
         position: event.latLng,
-        map: map
+        map: map,
+        icon: image
       });
     } else {
       StreetSmart.marker.setPosition(event.latLng);
@@ -326,7 +323,6 @@ StreetSmart.getTemplate = function(tpl, data, url){
     // Fills in the <%= %>, <% %> with data
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
-
     switch (tpl){
       case "map":
       $("main").html(compiledTemplate)
@@ -343,17 +339,35 @@ StreetSmart.getTemplate = function(tpl, data, url){
       break;
 
       default:
-      $("main").slideUp(300).delay(300, function(){
-        $("main").html(compiledTemplate).show();
-        console.log("yo1")
-      })
+      $("main").html(compiledTemplate).show();
     }
-
     if( tpl === "score"){
       //Run just for score
     }
 
-  })
+    google.maps.event.addListenerOnce(StreetSmart.map, 'idle', function(){
+      var image = "/images/map-placeholder-black.png"
+      var image2 = "/images/map-location-black2.png"
+       if(tpl === "score"){
+
+        var marker1 = new google.maps.Marker({
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
+                     lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          map: StreetSmart.map,
+          icon: image2
+        })
+        var marker2 = new google.maps.Marker({
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat,
+                     lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng},
+          title: 'Big Ben2',
+          map: StreetSmart.map,
+          icon: image
+        })
+      }
+    });
+ })
 }
 
 StreetSmart.formSubmit = function(){
@@ -432,51 +446,3 @@ $(function(){
   StreetSmart.initialize();
   StreetSmart.getTemplate("home", null, "home");
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-StreetSmart.markerAns = function(){
-  var myLatlng = {lat: 51.500083, lng: -0.126182};
-  var marker = new google.maps.Marker({
-    position: myLatlng,
-    title:"Hello World!"
-  });
-}
-
-marker.setMap(map);
-
-
-// var myLatLng = {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
-//                 lng: GameSession.rounds[GameSession.roundsPlayed-1].lng
-//                };
-
-
-
-// To add the marker to the map, call setMap();
