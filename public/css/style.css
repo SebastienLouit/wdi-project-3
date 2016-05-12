@@ -1,15 +1,15 @@
 .rotate {
-    -moz-transform: rotate(-180deg);
-    -webkit-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    -o-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
 }
 
 span.glyphicon-chevron-right {
-    font-size: 5em;
-    color: #E5E5E5;
-    margin: 0 auto; 
-    transition: all 0.5s ease;
+  font-size: 5em;
+  color: #E5E5E5;
+  margin: 0 auto; 
+  transition: all 0.5s ease;
 }
 
 .row {
@@ -20,7 +20,7 @@ span.glyphicon-chevron-right {
 
 #map-canvas {
   height: 100vh;
-  width: 43vw;
+  width: 50vw;
   padding: none;
   margin: none;
 }

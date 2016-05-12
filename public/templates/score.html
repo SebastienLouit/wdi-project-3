@@ -1,48 +1,63 @@
 <div class="scoreTem">
   <div class="container">
-    <h1>... Now let's see how street smart you really are.</h1>
+    <div class="row">
+      <div class="col-xs-6">
+          <h1>... Now let's see how street smart you really are.</h1>
 
-    <% if (StreetSmart.roundScore() < 50){ %>
-      <h2>A Hole in one. Incredible.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() < 50){ %>
+            <h2>A Hole in one. Incredible.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 50 && StreetSmart.roundScore() < 200){ %>
-      <h2>Eagle. Almost.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() >= 50 && StreetSmart.roundScore() < 200){ %>
+            <h2>Eagle. Almost.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 200 && StreetSmart.roundScore() < 500){ %>
-      <h2>Birdie. Pretty good.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() >= 200 && StreetSmart.roundScore() < 500){ %>
+            <h2>Birdie. Pretty good.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 500 && StreetSmart.roundScore() < 1000){ %>
-      <h2>Par. Not bad.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() >= 500 && StreetSmart.roundScore() < 1000){ %>
+            <h2>Par. Not bad.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 1000 && StreetSmart.roundScore() < 2000){ %>
-      <h2>Bogey. You'll get 'em next round.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() >= 1000 && StreetSmart.roundScore() < 2000){ %>
+            <h2>Bogey. You'll get 'em next round.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 2000 && StreetSmart.roundScore() < 5000){ %>
-      <h2>Double bogey. Way off.</h2>
-    <% } %>
+          <% if (StreetSmart.roundScore() >= 2000 && StreetSmart.roundScore() < 5000){ %>
+            <h2>Double bogey. Way off.</h2>
+          <% } %>
 
-    <% if (StreetSmart.roundScore() >= 5000){ %>
-      <h2>u wot? That's not even London any more is it?</h2>
-    <% } %>
-
-
-
-    <h2>Your guess was <%= Math.floor(StreetSmart.roundScore()*11.1) %>m away</h2>
-
-
-    <h2>Your score for this round is: <%= StreetSmart.roundScore() %></h2>
+          <% if (StreetSmart.roundScore() >= 5000){ %>
+            <h2>u wot? That's not even London any more is it?</h2>
+          <% } %>
 
 
 
-    <%if (GameSession.status === "Ongoing") {%>
-    <a class="btn btn-default" data-template="map" id="gmap">New round</a>
-    <% } else { %>
-    <a class="btn btn-default" data-template="finalscore" id="gmap">View Final Score</a>
-    <%}%>
+          <h2>Your guess was <%= Math.floor(StreetSmart.roundScore()*11.1) %>m away</h2>
+
+
+          <h2>Your score for this round is: <%= StreetSmart.roundScore() %></h2>
+
+
+
+          <%if (GameSession.status === "Ongoing") {%>
+          <a class="btn btn-default" data-template="map" id="gmap">New round</a>
+          <% } else { %>
+          <a class="btn btn-default" data-template="finalscore" id="gmap">View Final Score</a>
+          <%}%>
+        </div>
+        <div class="col-xs-6">
+          <div id="map-canvas">
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+    
