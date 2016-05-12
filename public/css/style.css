@@ -85,8 +85,10 @@ span.glyphicon-chevron-right {
 }
 
 .btn.btn-primary:active{
-  background: -webkit-linear-gradient(to left, #CC3B2B  , #962013); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #CC3B2B , #962013); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #962013;
+}
+.btn.btn-primary:hover{
+  background: #962013;
 }
 
 #checkAnswer{
@@ -94,19 +96,6 @@ span.glyphicon-chevron-right {
   left: 10;
   bottom: 0;
   z-index: 1000;
-}
-
-
-div.index-logo{
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 5;
-}
-
-div.index-logo h1{
-  color: #DEDEDE;
-  font-size: 2em;
 }
 
 div#street-smart-background{
