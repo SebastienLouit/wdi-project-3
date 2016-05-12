@@ -44,6 +44,7 @@ width: 80%;
 
 
 .btn-default{
+  font-family: 'Hammersmith One', sans-serif;
   border-radius: 6px;
   background: #1F1C18;
   border-color: #242422;
@@ -51,6 +52,7 @@ width: 80%;
 }
 
 .btn.btn-primary{
+  font-family: 'Hammersmith One', sans-serif;
   background: #8E0E00; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #8E0E00 , ##6F0B00); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -88,19 +90,20 @@ body{
 }
 
 h1{
-  font-size: 2em;
+  font-size: 2.827em;
+  font-family: 'Hammersmith One', sans-serif;
 }
 h2{
-  font-size: 1.5em;
-  font-family: 'RailwayRegular';
+  font-size: 1.999em;
+  font-family: 'Hammersmith One', sans-serif;
   font-weight: normal;
   font-style: normal;
 }
 p{
   font-size: 1em;
-  font-family: 'RailwayRegular';
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+
 }
 
 div.homeTem > div.container {
@@ -128,15 +131,28 @@ div.homeTem{
 div.homeTem > div.container > div.header{
   text-align: center;
   color: #E5E5E5;
-  text-shadow: 2px 2px #4E4948;
+  text-shadow: 1px 1px #4E4948;
+}
+dive.homeTem > div.container > div.header {
+  font-size: 3em;
 }
 
 div.homeTem > div.container > div.header > p{
- text-shadow: 2px 1px #1F1C18;
+ text-shadow: 1px 1px rgba(12, 12, 12, 0.69);
+ font-size: 1.2em;
+ font-weight: 400;
 }
 
 div.homeTem > div.container > div.header > img{
   width: 14vw;
+}
+
+div.homeTem > div.container > div.buttons > #register{
+  display: none;
+}
+
+div.homeTem > div.container > div.buttons > #login{
+  display: none;
 }
 
 div.rulesTem{
@@ -157,8 +173,12 @@ div.rulesTem > div.container{
   /*background: linear-gradient(90deg, #2A2C2D , #414345);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
 }
-div.rulesTem > div.container > img{
+div.rulesTem > div.container > div.header > img{
   width: 14vw;
+}
+div.rulesTem > div.container > div.content {
+  text-align: center;
+
 }
 
 div.scoreTem{
