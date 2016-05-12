@@ -5,7 +5,6 @@
         <div class="content">
           <h1>... Now let's see how street smart you really are.</h1>
           <h2>Your guess was <%= GameSession.rounds[GameSession.roundsPlayed -1].distance %>km off</h2>
-
           <h2>Your score for this round is: <%= StreetSmart.roundScore() %></h2>
           <% if (StreetSmart.roundScore() > 4800){ %>
             
