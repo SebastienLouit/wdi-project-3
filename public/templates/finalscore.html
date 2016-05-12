@@ -1,6 +1,6 @@
 <div class="finalscoreTem">
   <div class="container">
-    <h1>Final Score</h1>
+    <h2>Final Score</h1>
 
     <p>First round : <%= GameSession.rounds[0].score %></p>
     <p>Second round : <%= GameSession.rounds[1].score %></p>
@@ -17,7 +17,7 @@
       };
     %>
 
-    <h2>You were off by a total of <%= totalDistance %>km</h2>
+    <h2 class="totalDistance">You were off by a total of <%= totalDistance %>km</h2>
 
     <% if (GameSession.totalScore > 24000 ){ %>
       <p>Unbelievable. One might suspect you cheated.</p>
@@ -40,14 +40,14 @@
     <% } %>
 
     <% if (GameSession.totalScore <= 1000 && GameSession.totalScore > 200){ %>
-      <p>Oh well, that was quite poor, but there's always next time eh.</p>
+      <p>Oh well, that was not great, but there's always next time eh.</p>
     <% } %>
 
     <% if (GameSession.totalScore <= 200 ){ %>
       <p>wot?</p>
     <% } %>
 
-    <a class="btn btn-primary" method="post"  href="/api/games" data-template="map" id="gmap">Play Again?</a>
+    <a class="btn btn-primary" method="post"  href="/api/games" data-template="map" id="gmap">Play Again</a>
 
   </div>
 </div>
