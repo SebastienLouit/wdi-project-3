@@ -4,49 +4,45 @@
       <div class="col-lg-6 col-m-6 col-xs-6">
         <div class="content">
           <h1>... Now let's see how street smart you really are.</h1>
+          <h2>Your guess was <%= GameSession.rounds[GameSession.roundsPlayed -1].distance %>km off</h2>
+
+          <h2>Your score for this round is: <%= StreetSmart.roundScore() %></h2>
           <% if (StreetSmart.roundScore() > 4800){ %>
-          <h2>A Hole in one. Incredible.</h2>
+            
+          <p>A Hole in one. Incredible.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 4800 && StreetSmart.roundScore() > 4000){ %>
-          <h2>Almost.</h2>
+          <p>Almost.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 4000 && StreetSmart.roundScore() > 3000){ %>
-          <h2>Pretty good.</h2>
+          <p>Pretty good.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 3000 && StreetSmart.roundScore() > 2000){ %>
-          <h2>Not bad.</h2>
+          <p>Not bad.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 2000 && StreetSmart.roundScore() > 500){ %>
-          <h2>You'll get 'em next round.</h2>
+          <p>You'll get 'em next round.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 500 && StreetSmart.roundScore() > 10){ %>
-          <h2>Way off.</h2>
+          <p>Way off.</p>
           <% } %>
 
           <% if (StreetSmart.roundScore() <= 10){ %>
-          <h2>That's not even London any more, is it?</h2>
+          <p>That's not even London any more, is it?</p>
           <% } %>
+          <div class="button">
+            <%if (GameSession.status === "Ongoing") {%>
+            <a class="btn btn-primary" data-template="map" id="gmap">Next Round</a>
+            <% } else { %>
+            <a class="btn btn-primary" data-template="finalscore" id="gmap">View Final Score</a>
+            <%}%>
+          </div>
 
-
-          <h2>Your guess was <%= GameSession.rounds[GameSession.roundsPlayed -1].distance %>km off</h2>
-
-
-          <h2>Your score for this round is: <%= StreetSmart.roundScore() %></h2>
-
-        </div>
-
-
-        <div class="button">
-          <%if (GameSession.status === "Ongoing") {%>
-          <a class="btn btn-primary" data-template="map" id="gmap">Next Round</a>
-          <% } else { %>
-          <a class="btn btn-primary" data-template="finalscore" id="gmap">View Final Score</a>
-          <%}%>
         </div>
       </div>
       <div class="col-lg-6 col-m-6 col-xs-6">
