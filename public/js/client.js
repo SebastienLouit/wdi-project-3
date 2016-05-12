@@ -31,7 +31,7 @@ StreetSmart.generateStreetView = function(map) {
   }
   makePanorama(0);
 }
-StreetSmart.generateMap = function(marker1, marker2){
+StreetSmart.generateMap = function(marker1, marker2, gLine){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
@@ -279,7 +279,7 @@ StreetSmart.generateMap = function(marker1, marker2){
   StreetSmart.map = map
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
-    var image = "/images/map-placeholder-black.png"
+    var image = "/images/black-pin.png"
     if (!StreetSmart.marker) {
       StreetSmart.marker = new google.maps.Marker({
         position: event.latLng,
@@ -344,30 +344,42 @@ StreetSmart.getTemplate = function(tpl, data, url){
     if( tpl === "score"){
       //Run just for score
     }
-
     google.maps.event.addListenerOnce(StreetSmart.map, 'idle', function(){
-      var image = "/images/map-placeholder-black.png"
-      var image2 = "/images/map-location-black2.png"
-       if(tpl === "score"){
 
+      var image = "/images/black-pin.png"
+      var image2 = "/images/red-pin.png"
+      if(tpl === "score"){
         var marker1 = new google.maps.Marker({
-          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
-                     lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          map: StreetSmart.map,
-          icon: image2
-        })
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
+           lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
+           draggable: true,
+           animation: google.maps.Animation.DROP,
+           map: StreetSmart.map,
+           icon: image2
+         })
         var marker2 = new google.maps.Marker({
-          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat,
-                     lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng},
-          title: 'Big Ben2',
-          map: StreetSmart.map,
-          icon: image
-        })
-      }
-    });
- })
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
+           lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng},
+           map: StreetSmart.map,
+           icon: image
+         })
+        var gLineCoordonates = [
+        {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
+         lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
+         {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
+           lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng}
+           ];
+           var gLine = new google.maps.Polyline({
+            map: StreetSmart.map,
+            path: gLineCoordonates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+         }
+       });
+  })
 }
 
 StreetSmart.formSubmit = function(){
