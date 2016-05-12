@@ -255,17 +255,26 @@ div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background-image: url("../images/edmonton.jpg");
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-size: cover;
 }
 
-div.scoreTem > div.container-fluid > img{
-  width: 14vw;
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content{
+    background-color: rgba(35, 37, 38, 0.75);
+}
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > h2{
+ font-size: 1.7em;
+
+}
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > p{
+   font-weight: 400;
 }
 
 div.scoreTem #map-canvas {
   width: 100%;
 }
-
-
 
 
 div.finalscoreTem{
