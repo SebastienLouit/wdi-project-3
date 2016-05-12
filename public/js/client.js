@@ -327,15 +327,28 @@ StreetSmart.getTemplate = function(tpl, data, url){
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
 
-    if (tpl === "map" || tpl === "score"){
+    switch (tpl){
+      case "map":
       $("main").html(compiledTemplate)
       StreetSmart.generateMap();
-    } else {
-      $("main").slideUp(300).delay(300).fadeIn(300);
-      setTimeout(function(){
-        $("main").html(compiledTemplate).hide();
-      },300)
+      break;
+
+      case "home":
+      $("main").html(compiledTemplate)
+      break;
+
+      case "score":
+      $("main").html(compiledTemplate)
+      StreetSmart.generateMap();
+      break;
+
+      default:
+      $("main").slideUp(300).delay(300, function(){
+        $("main").html(compiledTemplate).show();
+        console.log("yo1")
+      })
     }
+
     if( tpl === "score"){
       //Run just for score
     }
@@ -460,11 +473,10 @@ StreetSmart.markerAns = function(){
 marker.setMap(map);
 
 
-// var myLatLng = {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
+// var myLatLng = {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
 //                 lng: GameSession.rounds[GameSession.roundsPlayed-1].lng
 //                };
 
 
 
 // To add the marker to the map, call setMap();
-
