@@ -21,9 +21,10 @@ function gameSessionGuess(req, res){
     if (!gameSession) return res.status(500).json({ success: false, message: "Game Session not found!"});
     if (gameSession.status !== "Ongoing") return res.status(500).json({ success: false, message: "Game session no longer active!"})
 
-    //THESE ARE THE PROBLEMS
     var guessLat = req.body.lat;
     var guessLng = req.body.lng;
+    gameSession.rounds[gameSession.roundsPlayed].guessLat = guessLat;
+    gameSession.rounds[gameSession.roundsPlayed].guessLng = guessLng;
 
     var roundLat = gameSession.rounds[gameSession.roundsPlayed].lat;
     var roundLng = gameSession.rounds[gameSession.roundsPlayed].lng;

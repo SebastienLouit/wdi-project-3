@@ -4,7 +4,9 @@ var roundSchema = new mongoose.Schema({
   lat: Number,
   lng: Number,
   score: Number,
-  distance: Number
+  distance: Number,
+  guessLat: Number,
+  guessLng: Number
 })
 
 module.exports = mongoose.model("Round", roundSchema)
