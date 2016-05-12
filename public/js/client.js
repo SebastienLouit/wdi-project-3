@@ -407,3 +407,52 @@ $(function(){
   StreetSmart.initialize();
   StreetSmart.getTemplate("home", null, "home");
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+StreetSmart.roundScore = function(){
+  var myLatlng = {lat: 51.500083, lng: -0.126182};
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      title:"Hello World!"
+  });
+}
+
+marker.setMap(map);
+
+
+// var myLatLng = {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
+//                 lng: GameSession.rounds[GameSession.roundsPlayed-1].lng
+//                };
+
+
+
+// To add the marker to the map, call setMap();
+
