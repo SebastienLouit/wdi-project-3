@@ -81,9 +81,9 @@ div.index-logo h1{
 
 body{
   position: relative;
-  background: #232526; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2A2C2D , #414345); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(90deg, #2A2C2D , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #E5E5E5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #E5E5E5 , #eef2f3); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #E5E5E5 , #eef2f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #E5E5E5;
 }
 
@@ -156,4 +156,26 @@ div.rulesTem > div.container{
   /*background: -webkit-linear-gradient(to left, #2A2C2D , #414345);*/ /* Chrome 10-25, Safari 5.1-6 */
   /*background: linear-gradient(90deg, #2A2C2D , #414345);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
+}
+div.rulesTem > div.container > img{
+  width: 14vw;
+}
+
+div.scoreTem{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+div.scoreTem > div.container{
+  background-color: rgba(36,36,34, 0.6);
+  text-align: center;
+  width: 100%;
+}
+
+div.scoreTem > div.container > img{
+  width: 14vw;
 }
