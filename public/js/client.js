@@ -323,16 +323,29 @@ StreetSmart.getTemplate = function(tpl, data, url){
     // Fills in the <%= %>, <% %> with data
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
-    if (tpl === "map" || tpl === "score"){
+    switch (tpl){
+      case "map":
       $("main").html(compiledTemplate)
       StreetSmart.generateMap();
-    } else {
-      $("main").slideUp(300).delay(300).fadeIn(300);
-      setTimeout(function(){
-        $("main").html(compiledTemplate).hide();
-      },300)
+      break;
+
+      case "home":
+      $("main").html(compiledTemplate)
+      break;
+
+      case "score":
+      $("main").html(compiledTemplate)
+      StreetSmart.generateMap();
+      break;
+
+      default:
+      $("main").html(compiledTemplate).show();
+    }
+    if( tpl === "score"){
+      //Run just for score
     }
     google.maps.event.addListenerOnce(StreetSmart.map, 'idle', function(){
+
       var image = "/images/black-pin.png"
       var image2 = "/images/red-pin.png"
       if(tpl === "score"){
@@ -353,10 +366,10 @@ StreetSmart.getTemplate = function(tpl, data, url){
         var gLineCoordonates = [
         {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
          lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
-        {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
-         lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng}
-          ];
-          var gLine = new google.maps.Polyline({
+         {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
+           lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng}
+           ];
+           var gLine = new google.maps.Polyline({
             map: StreetSmart.map,
             path: gLineCoordonates,
             geodesic: true,
@@ -364,8 +377,8 @@ StreetSmart.getTemplate = function(tpl, data, url){
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
-        }
-      });
+         }
+       });
   })
 }
 
@@ -445,21 +458,3 @@ $(function(){
   StreetSmart.initialize();
   StreetSmart.getTemplate("home", null, "home");
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
