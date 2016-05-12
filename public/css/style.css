@@ -1,6 +1,15 @@
-#clicinImage{
+.rotate {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+}
 
-width: 80%;
+span.glyphicon-chevron-right {
+    font-size: 5em;
+    color: #E5E5E5;
+    margin: 0 auto; 
+    transition: all 0.5s ease;
 }
 
 .row {
@@ -10,30 +19,32 @@ width: 80%;
 }
 
 #map-canvas {
-  height: 102vh;
-  width: 45vw;
+  height: 100vh;
+  width: 43vw;
   padding: none;
   margin: none;
 }
 
 #slideButton {
+  vertical-align: center;
   text-align: center;
-  height: 102vh;
-  width: 15vw;
+  display: flex;
+  align-items: center; 
+  height: 100vh;
+  width: 9vw;
   padding: none;
   margin: none;
   background-color: #8E0E00;
   background-color: -webkit-linear-gradient(to left, #8E0E00 , #6F0B00); 
   /* Chrome 10-25, Safari 5.1-6 */
   background-color: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-image: url("/images/gmapLogo.png");
-  background-image: center;
-  background-size: cover;
+  background-color: #9E1800;
+
 }
 
 #pano{
-  height: 102vh;
-  width: 51vw;
+  height: 100vh;
+  width: 50vw;
   padding: none;
   margin: none
 }
