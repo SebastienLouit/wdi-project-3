@@ -8,7 +8,7 @@
 span.glyphicon-chevron-right {
     font-size: 5em;
     color: #E5E5E5;
-    margin: 0 auto; 
+    margin: 0 auto;
     transition: all 0.5s ease;
 }
 
@@ -29,7 +29,7 @@ span.glyphicon-chevron-right {
   vertical-align: center;
   text-align: center;
   display: flex;
-  align-items: center; 
+  align-items: center;
   height: 100vh;
   width: 9vw;
   padding: none;
@@ -68,7 +68,7 @@ span.glyphicon-chevron-right {
   background: -webkit-linear-gradient(to left, #8E0E00 , ##6F0B00); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #8E0E00 , #6F0B00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 6px;
-  border-color: #1F1C18;
+  border-color: rgba(27, 26, 24, 0.7);
   margin-bottom: 7px;
 }
 
@@ -179,17 +179,13 @@ div.rulesTem{
 }
 
 div.rulesTem > div.container{
-  background-color: rgba(35,37,38, 0.6); /* fallback for old browsers */
+  background-color: rgba(35,37,38, 0.635); /* fallback for old browsers */
   /*background: -webkit-linear-gradient(to left, #2A2C2D , #414345);*/ /* Chrome 10-25, Safari 5.1-6 */
   /*background: linear-gradient(90deg, #2A2C2D , #414345);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
 }
 div.rulesTem > div.container > div.header > img{
   width: 14vw;
-}
-div.rulesTem > div.container > div.content {
-  text-align: center;
-
 }
 
 div.scoreTem{
