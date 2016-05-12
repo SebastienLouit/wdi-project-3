@@ -269,10 +269,23 @@ div.finalscoreTem > div.container{
   flex-direction: column;
 
 }
-.totalDistance {
+.fontSizeChange {
  font-size: 1.5em;
 }
 
 div.finalscoreTem > div.container > p {
   line-height: 1;
+}
+
+
+div.finalscoreTem > div.container > div.fontSizeChange > h2 {
+   font-size: 1.2em;
+   text-align: center;
+}
+div.finalscoreTem > div.container > div.fontSizeChange h2.totalDistance{
+  margin-top : 0px;
+}
+
+div.finalscoreTem > div.container > div.button {
+  margin: 10px;
 }

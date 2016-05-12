@@ -7,17 +7,18 @@
     <p>Third round : <%= GameSession.rounds[2].score %></p>
     <p>Fourth round : <%= GameSession.rounds[3].score %></p>
     <p>Fifth round : <%= GameSession.rounds[4].score %></p>
+    <div class="fontSizeChange">
+      <h2 class="totalScore">Total Score : <%= GameSession.totalScore %></h2>
 
-    <h2>Total Score : <%= GameSession.totalScore %></h2>
+      <%
+        var totalDistance = 0;
+        for(i=0; i < 5; i++){
+          totalDistance += GameSession.rounds[i].distance
+        };
+      %>
 
-    <%
-      var totalDistance = 0;
-      for(i=0; i < 5; i++){
-        totalDistance += GameSession.rounds[i].distance
-      };
-    %>
-
-    <h2 class="totalDistance">You were off by a total of <%= totalDistance %>km</h2>
+      <h2 class="totalDistance">You were off by a total of <%= totalDistance %>km</h2>
+    </div>
 
     <% if (GameSession.totalScore > 24000 ){ %>
       <p>Unbelievable. One might suspect you cheated.</p>
@@ -46,8 +47,8 @@
     <% if (GameSession.totalScore <= 200 ){ %>
       <p>wot?</p>
     <% } %>
-
-    <a class="btn btn-primary" method="post"  href="/api/games" data-template="map" id="gmap">Play Again</a>
-
+    <div class="button">
+      <a class="btn btn-primary" method="post"  href="/api/games" data-template="map" id="gmap">Play Again</a>
+    </div>
   </div>
 </div>
