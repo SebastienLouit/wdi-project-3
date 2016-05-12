@@ -31,7 +31,8 @@ StreetSmart.generateStreetView = function(map) {
   }
   makePanorama(0);
 }
-StreetSmart.generateMap = function(marker1, marker2, gLine){
+
+StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
@@ -274,25 +275,30 @@ StreetSmart.generateMap = function(marker1, marker2, gLine){
     }
     ]
   });
-  this.generateStreetView(map);
+  if (GameSession.status === "Ongoing"){
+    this.generateStreetView(map);
+  }
   StreetSmart.marker = null;
   StreetSmart.map = map
   // This event listener calls addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) {
-    var image = "/images/black-pin.png"
-    if (!StreetSmart.marker) {
-      StreetSmart.marker = new google.maps.Marker({
-        position: event.latLng,
-        map: map,
-        icon: image
-      });
-    } else {
-      StreetSmart.marker.setPosition(event.latLng);
-    }
-    var myLatLng = event.latLng;
-    StreetSmart.lat = myLatLng.lat();
-    StreetSmart.lng = myLatLng.lng();
-  });
+  if (!!($("div.row div.col-xs-1").length)){
+    google.maps.event.addListener(map, 'click', function(event) {
+      var image = "/images/black-pin.png"
+      if (!StreetSmart.marker) {
+        StreetSmart.marker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          icon: image
+        });
+      } else {
+        StreetSmart.marker.setPosition(event.latLng);
+      }
+      var myLatLng = event.latLng;
+      StreetSmart.lat = myLatLng.lat();
+      StreetSmart.lng = myLatLng.lng();
+    });
+  }
+
 }
 
 StreetSmart.makeGuess = function() {
@@ -349,10 +355,8 @@ StreetSmart.getTemplate = function(tpl, data, url){
       break;
 
       case "score":
-      $(".row").slideUp(300, function(){
-        $("main").html(compiledTemplate)
-        StreetSmart.generateMap();
-      })
+      $("main").html(compiledTemplate)
+      StreetSmart.generateMap();
       break;
 
       case "finalscore":
@@ -373,6 +377,7 @@ StreetSmart.getTemplate = function(tpl, data, url){
       var image = "/images/black-pin.png"
       var image2 = "/images/red-pin.png"
       if(tpl === "score"){
+        console.log("fired")
         var marker1 = new google.maps.Marker({
           position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
            lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
@@ -397,7 +402,7 @@ StreetSmart.getTemplate = function(tpl, data, url){
             map: StreetSmart.map,
             path: gLineCoordonates,
             geodesic: true,
-            strokeColor: '#FF0000',
+            strokeColor: '#8E0E00',
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
