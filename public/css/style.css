@@ -231,24 +231,42 @@ div.rulesTem > div.container > div.button {
   margin: 10px;
 }
 
-div.scoreTem{
+
+div.scoreTem > div.container-fluid {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-
-div.scoreTem > div.container{
+div.scoreTem > div.container-fluid > div.row > div.col-m-6{
   background-color: rgba(36,36,34, 0.6);
+  margin: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child{
+  height: 100vh;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div.scoreTem > div.container-fluid > img{
+  width: 14vw;
+}
+
+div.scoreTem #map-canvas {
   width: 100%;
 }
 
-div.scoreTem > div.container > img{
-  width: 14vw;
-}
+
 
 
 div.finalscoreTem{
