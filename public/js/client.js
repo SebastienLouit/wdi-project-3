@@ -332,12 +332,10 @@ StreetSmart.getTemplate = function(tpl, data, url){
         $("main").html(compiledTemplate).hide();
       },300)
     }
-
     google.maps.event.addListenerOnce(StreetSmart.map, 'idle', function(){
       var image = "/images/black-pin.png"
       var image2 = "/images/red-pin.png"
       if(tpl === "score"){
-
         var marker1 = new google.maps.Marker({
           position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
            lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
