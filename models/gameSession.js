@@ -31,12 +31,3 @@ gameSessionSchema.pre('save', function(next) {
 })
 
 module.exports = mongoose.model("gameSession", gameSessionSchema)
-
-// gameSessionSchema.pre('save', function(next) {
-//   now = new Date();
-//   this.updatedAt = now;
-//   if (!this.createdAt) {
-//     this.createdAt = now
-//   }
-//   next();
-// })
