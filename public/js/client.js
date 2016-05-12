@@ -324,18 +324,42 @@ StreetSmart.getTemplate = function(tpl, data, url){
     var compiledTemplate = parsedTemplate(data);
     // Replace the html inside main with the compiled template
     switch (tpl){
-      case "map":
-      $("main").html(compiledTemplate)
-      StreetSmart.generateMap();
-      break;
 
       case "home":
       $("main").html(compiledTemplate)
+      $(".homeTem").hide().fadeIn(400)
+      break;
+
+      case "rules":
+      $(".homeTem").slideUp(300, function(){
+        $("main").html(compiledTemplate)
+        $(".rulesTem").hide().fadeIn(300)
+      })
+      break;
+
+      case "map":
+      var tem = ""
+      !!($(".homeTem").length) ? tem = "div.homeTem" : tem = "div.rulesTem";
+      !!($(".scoreTem").length) ? tem = "div.scoreTem" : null ;
+      !!($(".finalscoreTem").length) ? tem = "div.finalscoreTem" : null ;
+      $(tem).slideUp(300, function(){
+        $("main").html(compiledTemplate)
+        StreetSmart.generateMap();
+      })
       break;
 
       case "score":
-      $("main").html(compiledTemplate)
-      StreetSmart.generateMap();
+      $(".row").slideUp(300, function(){
+        $("main").html(compiledTemplate)
+        StreetSmart.generateMap();
+      })
+      break;
+
+      case "finalscore":
+      $(".scoreTem").slideUp(300, function(){
+        $("main").html(compiledTemplate)
+        $(".finalscoreTem").hide().fadeIn(300)
+      })
       break;
 
       default:
@@ -350,23 +374,23 @@ StreetSmart.getTemplate = function(tpl, data, url){
       var image2 = "/images/red-pin.png"
       if(tpl === "score"){
         var marker1 = new google.maps.Marker({
-          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
-           lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
+           lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
            draggable: true,
            animation: google.maps.Animation.DROP,
            map: StreetSmart.map,
            icon: image2
          })
         var marker2 = new google.maps.Marker({
-          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
+          position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat,
            lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng},
            map: StreetSmart.map,
            icon: image
          })
         var gLineCoordonates = [
-        {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat, 
-         lng: GameSession.rounds[GameSession.roundsPlayed-1].lng}, 
-         {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat, 
+        {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
+         lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
+         {lat: GameSession.rounds[GameSession.roundsPlayed-1].guessLat,
            lng: GameSession.rounds[GameSession.roundsPlayed-1].guessLng}
            ];
            var gLine = new google.maps.Polyline({
