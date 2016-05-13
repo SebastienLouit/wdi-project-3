@@ -162,6 +162,7 @@ div.homeTem > div.container > div.header{
 div.homeTem > div.container {
   background-color: rgba(40, 40, 43, 0.18);
   border-radius: 15px;
+  padding: 13px;
 }
 
 div.homeTem > div.container > div.header > h1{
@@ -182,7 +183,7 @@ div.homeTem > div.container > div.header > img{
 
 div.homeTem > div.container > div.buttons{
   margin: 10px;
-  margin: 58px;
+
 }
 
 div.homeTem > div.container > div.buttons > #register{
@@ -254,9 +255,12 @@ div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child{
 div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content{
     background-color: rgba(35, 37, 38, 0.75);
 }
-div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > h2{
- font-size: 1.7em;
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > h1{
+ font-size: 1.999em;
 
+}
+div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > h2{
+font-size: 1.414em;
 }
 div.scoreTem > div.container-fluid > div.row > div.col-m-6:first-child > div.content > p{
    font-weight: 400;
