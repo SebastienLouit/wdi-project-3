@@ -1,6 +1,14 @@
 var StreetSmart = StreetSmart || {}
 var GameSession = GameSession || {}
 
+StreetSmart.getUrl = function(){
+  if (window.location.href.indexOf("localhost") !== -1){
+    StreetSmart.url = "http://localhost:3000";
+  } else {
+    StreetSmart.url = "https://streetsmartgame.herokuapp.com"
+  }
+}
+
 StreetSmart.generateStreetView = function(map) {
   // FEED IN LAT AND LNG FOR LOCATION
   var lat = GameSession.rounds[GameSession.roundsPlayed].lat
@@ -305,7 +313,7 @@ StreetSmart.makeGuess = function() {
   var gameId  = GameSession._id
   event.preventDefault();
   return $.ajax({
-    url: "http://localhost:3000/api/games/"+gameId+"/guesses",
+    url: StreetSmart.url + "/api/games/"+gameId+"/guesses",
     method: "POST",
     data: { lat: StreetSmart.lat, lng: StreetSmart.lng }
   }).done(function (data){
@@ -318,7 +326,7 @@ StreetSmart.makeGuess = function() {
 }
 
 StreetSmart.getTemplate = function(tpl, data, url){
-  var templateUrl = "http://localhost:3000/templates/" + tpl + ".html";
+  var templateUrl = StreetSmart.url + "/templates/" + tpl + ".html";
   return $.ajax({
     url: templateUrl,
     method: "GET",
@@ -456,7 +464,7 @@ StreetSmart.bindFormSubmits = function(){
 StreetSmart.apiAjaxRequest = function(url, method, data, tpl){
   return $.ajax({
     type: method,
-    url: "http://localhost:3000"+ url,
+    url: StreetSmart.url + url,
     data: data,
   }).done(function(data){
     if (url = "/api/games") StreetSmart.getGameSession(data);
@@ -474,6 +482,7 @@ StreetSmart.getGameSession = function(data){
 StreetSmart.initialize = function () {
   this.bindLinkClicks();
   this.bindFormSubmits();
+  this.getUrl();
 }
 // StreetSmart.hidePano = function {
 //   $("#pano").hide()
