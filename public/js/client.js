@@ -12,7 +12,6 @@ StreetSmart.generateStreetView = function(map) {
       {location: new google.maps.LatLng(lat, lng), radius: radius},
       function(data) {
         if (!data){
-          console.log("Radius expanded to " + radius);
           return makePanorama(radius+25);
         }
         var lat = data.location.latLng.lat();
@@ -35,7 +34,7 @@ StreetSmart.generateStreetView = function(map) {
 StreetSmart.generateMap = function(){
   var london = { lat: 51.50, lng: -0.08 };
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 12,
+    zoom: 10,
     center: london,
     streetViewControl: false,
     styles: [
@@ -377,7 +376,6 @@ StreetSmart.getTemplate = function(tpl, data, url){
       var image = "/images/black-pin.png"
       var image2 = "/images/red-pin.png"
       if(tpl === "score"){
-        console.log("fired")
         var marker1 = new google.maps.Marker({
           position: {lat: GameSession.rounds[GameSession.roundsPlayed-1].lat,
            lng: GameSession.rounds[GameSession.roundsPlayed-1].lng},
